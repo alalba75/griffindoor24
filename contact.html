@@ -26,9 +26,12 @@
 <main class="container">
   <section class="hero">
     <h2>Contact 💌</h2>
-    <p>Send us a message and it will go straight to our inbox.</p>
+    <p>Send us a message — it goes straight to our inbox.</p>
 
     <form action="thanks.html" method="GET" onsubmit="sendMail(event)">
+      <!-- Honeypot field (hidden from humans) -->
+      <input type="text" name="company" tabindex="-1" autocomplete="off" style="display:none">
+
       <div class="grid">
         <div class="card span-6">
           <label>
@@ -47,46 +50,4 @@
         <div class="card">
           <label>
             Message<br>
-            <textarea name="message" rows="5" required style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1)"></textarea>
-          </label>
-        </div>
-
-        <div class="card">
-          <button class="btn primary" type="submit">Send message</button>
-        </div>
-      </div>
-    </form>
-  </section>
-
-  <footer>© <span id="y"></span> GriffinDoor24</footer>
-</main>
-
-<script src="script.js"></script>
-<script>
-document.getElementById("y").textContent = new Date().getFullYear();
-
-function sendMail(e){
-  e.preventDefault();
-
-  const form = e.target;
-  const name = form.name.value;
-  const email = form.email.value;
-  const message = form.message.value;
-
-  const subject = encodeURIComponent("Message from GriffinDoor24 website");
-  const body = encodeURIComponent(
-    "Name: " + name + "\n" +
-    "Email: " + email + "\n\n" +
-    message
-  );
-
-  window.location.href = `mailto:admin@webstreamedia.com?subject=${subject}&body=${body}`;
-
-  // after a short delay, go to thanks page
-  setTimeout(() => {
-    window.location.href = "thanks.html";
-  }, 500);
-}
-</script>
-</body>
-</html>
+            <textarea name="message" rows="5" required style="width:100%;padding:10px;border-radius:10px;border:2
