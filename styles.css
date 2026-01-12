@@ -126,3 +126,10 @@ header{
 
 footer{margin:24px 0 14px;color:var(--muted);font-weight:900;text-align:center}
 .small{font-size:.95rem}
+.banner-img {
+  display: block;
+  width: 100vw;
+  height: 260px;      /* try 200–320 */
+  object-fit: cover;
+  margin: 0 auto;
+}
