@@ -6,14 +6,6 @@
   <title>Contact — GriffinDoor24</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* Ensure form elements are clickable */
-    form, input, textarea, button {
-      position: relative;
-      z-index: 5;
-      pointer-events: auto;
-    }
-  </style>
 </head>
 <body>
 <header>
@@ -36,8 +28,14 @@
     <h2>Contact 💌</h2>
     <p>Send us a message — it goes straight to our inbox.</p>
 
-    <form action="thanks.html" method="GET" onsubmit="sendMail(event)">
-      <!-- Honeypot field -->
+    <form 
+      action="https://formspree.io/f/YOUR_FORM_ID" 
+      method="POST"
+    >
+      <!-- Redirect after submit -->
+      <input type="hidden" name="_next" value="https://griffindoor24.netlify.app/thanks.html">
+
+      <!-- Honeypot spam field -->
       <input type="text" name="company" tabindex="-1" autocomplete="off" style="display:none">
 
       <div class="grid">
@@ -58,7 +56,7 @@
         <div class="card">
           <label>
             Message<br>
-            <textarea name="message" rows="5" required style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1); resize:vertical;"></textarea>
+            <textarea name="message" rows="5" required style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1);resize:vertical;"></textarea>
           </label>
         </div>
 
@@ -75,30 +73,6 @@
 <script src="script.js"></script>
 <script>
 document.getElementById("y").textContent = new Date().getFullYear();
-
-const formStart = Date.now();
-
-function sendMail(e){
-  e.preventDefault();
-  const form = e.target;
-
-  if (form.company.value !== "") return false;
-  if (Date.now() - formStart < 3000) {
-    alert("Please take a moment before submitting.");
-    return false;
-  }
-
-  const subject = encodeURIComponent("Message from GriffinDoor24 website");
-  const body = encodeURIComponent(
-    "Name: " + form.name.value + "\n" +
-    "Email: " + form.email.value + "\n\n" +
-    form.message.value
-  );
-
-  window.location.href = `mailto:admin@webstreamedia.com?subject=${subject}&body=${body}`;
-
-  setTimeout(() => window.location.href = "thanks.html", 500);
-}
 </script>
 </body>
 </html>
