@@ -14,7 +14,7 @@
             <a data-nav href="index.html">Home</a>
             <a data-nav href="videos.html">Weekly Library</a>
             <a data-nav href="news.html">News</a>
-            <a data-nav href="about.html">Moving Boxes</a>
+            <a data-nav href="movingboxes.html">Moving Boxes</a>
             <a data-nav href="contact.html">Contact</a>
           </nav>
         </div>
