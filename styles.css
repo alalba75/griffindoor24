@@ -28,21 +28,23 @@ body{
 .container{max-width:1100px;margin:0 auto;padding:24px}
 
 /* ---------- Banner Header ---------- */
-.banner-header{
-  width:100%;
-  overflow:hidden;
-  position:relative;
-  border-bottom:2px solid rgba(0,0,0,.06);
+/* --- Final banner fit --- */
+.banner-header {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(0,0,0,.06);
+  background: #000; /* prevents white gaps while loading */
 }
 
-.banner-img{
-  width:100%;
-  height:220px;          /* Adjust: 180–260 */
-  object-fit:cover;
-  object-position:center;
-  display:block;
+.banner-img {
+  width: 100%;
+  max-width: 100%;
+  height: 180px;           /* ideal strip height */
+  object-fit: cover;      /* fill width cleanly */
+  object-position: center;/* centre important content */
+  display: block;
 }
-
 /* Nav overlay centered on banner */
 .banner-overlay{
   position:absolute;
