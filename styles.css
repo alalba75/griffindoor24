@@ -229,3 +229,24 @@ li{ margin:0 0 6px; }
     border-radius:10px;
   }
 }
+/* ============================================================
+   Contact page — message box width
+   ============================================================ */
+
+/* Target textarea in contact forms */
+form textarea,
+.contact-form textarea,
+#contact textarea {
+  width: 40%;
+  min-width: 320px;   /* prevents it becoming too tiny on smaller screens */
+  max-width: 100%;
+}
+
+/* On small screens, let it go full width */
+@media (max-width: 900px) {
+  form textarea,
+  .contact-form textarea,
+  #contact textarea {
+    width: 100%;
+  }
+}
