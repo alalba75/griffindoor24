@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap");
+
+:root{
+  --bg:#fff7fb;
+  --ink:#1b1b1f;
+  --muted:#4a4a55;
+  --c1:#ff4d6d;
+  --c2:#ffa62b;
+  --c3:#2ec4b6;
+  --c4:#6c63ff;
+  --c5:#4dd4ff;
+  --shadow:0 12px 30px rgba(0,0,0,.12);
+  --radius:18px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Nunito",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,77,109,.20), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(77,212,255,.22), transparent 45%),
+    radial-gradient(circle at 70% 90%, rgba(46,196,182,.18), transparent 45%),
+    var(--bg);
+  color:var(--ink);
+}
+
+.container{max-width:1100px;margin:0 auto;padding:24px}
+
+header{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:blur(10px);
+  background:rgba(255,247,251,.70);
+  border-bottom:2px solid rgba(0,0,0,.06);
+}
+
+.nav{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between}
+.brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit}
+.logo{
+  width:42px;height:42px;border-radius:14px;
+  background:conic-gradient(from 180deg,var(--c1),var(--c2),var(--c3),var(--c4),var(--c5),var(--c1));
+  box-shadow:0 10px 18px rgba(0,0,0,.15);
+}
+.brand h1{font-family:"Fredoka",cursive;font-size:1.35rem;margin:0}
+
+.navlinks{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 0}
+.navlinks a{
+  text-decoration:none;
+  padding:10px 14px;
+  border-radius:999px;
+  border:2px solid rgba(0,0,0,.10);
+  background:rgba(255,255,255,.75);
+  box-shadow:0 8px 16px rgba(0,0,0,.08);
+  font-weight:900;
+}
+.navlinks a.active{
+  border-color:transparent;
+  background:linear-gradient(135deg, rgba(255,77,109,.45), rgba(255,166,43,.45), rgba(46,196,182,.35));
+}
+
+.hero{
+  margin-top:22px;
+  border-radius:var(--radius);
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255,166,43,.35), transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(108,99,255,.25), transparent 45%),
+    radial-gradient(circle at 70% 90%, rgba(46,196,182,.25), transparent 45%),
+    rgba(255,255,255,.75);
+  border:2px solid rgba(0,0,0,.08);
+  box-shadow:var(--shadow);
+  padding:26px;
+}
+.hero h2{font-family:"Fredoka",cursive;font-size:clamp(1.6rem,2.5vw,2.3rem);margin:0 0 8px}
+.hero p{margin:0 0 16px;color:var(--muted);font-size:1.05rem;line-height:1.5}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:12px 16px; border-radius:14px;
+  text-decoration:none; font-weight:900;
+  border:2px solid rgba(0,0,0,.10);
+  background:rgba(255,255,255,.85);
+  box-shadow:0 10px 18px rgba(0,0,0,.10);
+}
+.btn.primary{
+  background:linear-gradient(135deg, rgba(255,77,109,.65), rgba(255,166,43,.55), rgba(77,212,255,.45));
+  border-color:transparent;
+}
+
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:18px}
+.card{
+  grid-column:span 12;
+  background:rgba(255,255,255,.85);
+  border:2px solid rgba(0,0,0,.08);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:0 10px 22px rgba(0,0,0,.10);
+}
+.card h3{font-family:"Fredoka",cursive;margin:0 0 8px}
+.card p{margin:0;color:var(--muted);line-height:1.5}
+@media (min-width: 880px){
+  .span-7{grid-column:span 7}
+  .span-5{grid-column:span 5}
+  .span-6{grid-column:span 6}
+}
+
+.embed{
+  width:100%;
+  aspect-ratio:16/9;
+  border:0;
+  border-radius:14px;
+  box-shadow:0 12px 24px rgba(0,0,0,.18);
+}
+
+.newsGrid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.newsBox{
+  grid-column:span 12;
+  border-radius:18px;
+  padding:16px;
+  border:2px solid rgba(0,0,0,.10);
+  background:rgba(255,255,255,.88);
+  box-shadow:0 10px 20px rgba(0,0,0,.10);
+}
+@media (min-width:880px){ .newsBox{grid-column:span 6} }
+.newsBox h4{margin:0 0 6px;font-family:"Fredoka",cursive;font-size:1.15rem}
+.newsMeta{color:var(--muted);font-weight:900;font-size:.95rem;margin-bottom:8px}
+
+footer{margin:24px 0 14px;color:var(--muted);font-weight:900;text-align:center}
+.small{font-size:.95rem}
