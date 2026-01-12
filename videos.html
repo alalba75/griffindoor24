@@ -3,65 +3,38 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>Weekly Library — GriffinDoor24</title>
+  <meta name="description" content="Browse GriffinDoor24 weekly uploads in one friendly library." />
+
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css" />
+
+  <link rel="canonical" id="canonical" href="">
+  <meta property="og:url" id="ogurl" content="">
 </head>
+
 <body>
-<header>
-  <div class="container">
-    <div class="nav">
-      <a class="brand" href="index.html"><span class="logo"></span><h1>GriffinDoor24</h1></a>
-      <nav class="navlinks">
-        <a data-nav href="index.html">Home</a>
-        <a data-nav href="videos.html">Weekly Library</a>
-        <a data-nav href="news.html">News</a>
-        <a data-nav href="about.html">About</a>
-        <a data-nav href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </div>
-</header>
+  <div id="site-header"></div>
 
-<main class="container">
-  <section class="hero">
-    <h2>The Weekly Library 📚</h2>
-    <p>Everything in one friendly place. Add “Week” boxes if you want a manual archive.</p>
-    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
-      <a class="btn primary" href="https://www.youtube.com/@TheGriffinDoor24" target="_blank" rel="noopener">Open Channel</a>
-      <a class="btn" href="news.html">Read News</a>
-    </div>
-  </section>
+  <main class="container">
+    <section class="hero">
+      <h2>The Weekly Library 📚</h2>
+      <p>Everything in one friendly place.</p>
+    </section>
 
-  <section class="grid">
-    <article class="card span-6">
-      <h3>All uploads</h3>
-      <iframe class="embed"
-        title="GriffinDoor24 uploads"
-        src="https://www.youtube.com/embed?listType=playlist&list=UUuYQxoOH-MnuEQsxdywLzqw"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </article>
+    <section class="grid">
+      <article class="card span-12">
+        <h3>All uploads</h3>
+        <iframe class="embed"
+          title="GriffinDoor24 uploads"
+          src="https://www.youtube.com/embed?listType=playlist&list=UUuYQxoOH-MnuEQsxdywLzqw"
+          allowfullscreen></iframe>
+      </article>
+    </section>
+  </main>
 
-    <article class="card span-6">
-      <h3>Week cards (optional)</h3>
-      <div class="newsGrid" style="margin-top:12px">
-        <div class="newsBox" style="background:rgba(255,77,109,.15)">
-          <h4>Week 1</h4><div class="newsMeta">Theme: Community hello 👋</div>
-          <p>Paste a YouTube link here and a 1–2 line summary.</p>
-        </div>
-        <div class="newsBox" style="background:rgba(46,196,182,.15)">
-          <h4>Week 2</h4><div class="newsMeta">Theme: Family fun 🎈</div>
-          <p>Duplicate these boxes as you go.</p>
-        </div>
-      </div>
-    </article>
-  </section>
-
-  <footer>© <span id="y"></span> GriffinDoor24</footer>
-</main>
-
-<script src="script.js"></script>
-<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
 </body>
 </html>
