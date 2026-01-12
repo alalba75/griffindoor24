@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>News — GriffinDoor24</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="logo"></span><h1>GriffinDoor24</h1></a>
+      <nav class="navlinks">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="videos.html">Weekly Library</a>
+        <a data-nav href="news.html">News</a>
+        <a data-nav href="about.html">About</a>
+        <a data-nav href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <h2>News (text-only) 🗞️</h2>
+    <p>Quick updates in colourful boxes. Duplicate a box, change title/date/text, done.</p>
+  </section>
+
+  <section class="card">
+    <h3>Latest updates</h3>
+    <div class="newsGrid" style="margin-top:12px">
+      <article class="newsBox" style="background:rgba(255,166,43,.18)">
+        <h4>New video this week!</h4>
+        <div class="newsMeta">Posted: Monday</div>
+        <p>Fresh upload is up — share it with someone who needs a smile.</p>
+      </article>
+
+      <article class="newsBox" style="background:rgba(108,99,255,.16)">
+        <h4>Shout-outs</h4>
+        <div class="newsMeta">Posted: Sunday</div>
+        <p>Thanks for the comments and shares — you’re building this with us.</p>
+      </article>
+
+      <article class="newsBox" style="background:rgba(46,196,182,.14)">
+        <h4>Suggestion box</h4>
+        <div class="newsMeta">Posted: Saturday</div>
+        <p>Got a local, fun, family-friendly idea? Send it through.</p>
+      </article>
+
+      <article class="newsBox" style="background:rgba(255,77,109,.14)">
+        <h4>Reminder</h4>
+        <div class="newsMeta">Posted: Friday</div>
+        <p>News is text-only on purpose: fast to read, easy to update.</p>
+      </article>
+    </div>
+  </section>
+
+  <footer>© <span id="y"></span> GriffinDoor24</footer>
+</main>
+
+<script src="script.js"></script>
+<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
