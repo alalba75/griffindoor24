@@ -1,193 +1,231 @@
 /* ============================================================
-   GriffinDoor24 — styles.css
-   Performance + layout baseline (Jan 12, 2026)
-   Works with: .container, .hero, .grid, .card, .btn, .span-*
-   Fixes: YouTube portrait -> forces 16:9 landscape
+   GriffinDoor24 — COMPLETE styles.css
+   Landscape video + restored UI
+   Updated Jan 12, 2026
    ============================================================ */
 
-/* ---------- Reset ---------- */
+/* ---------- Reset / Base ---------- */
 *,
 *::before,
 *::after { box-sizing: border-box; }
 
 html, body { height: 100%; }
 
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.55;
-  color: #111;
-  background: #f6f7fb;
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height:1.55;
+  color:#101114;
+  background:#f6f7fb;
 }
 
-/* Make images never overflow */
-img { max-width: 100%; height: auto; display: block; }
-
-/* Links */
-a { color: inherit; }
+img{ max-width:100%; height:auto; display:block; }
+a{ color:inherit; }
+p{ margin:0 0 10px; }
+h1,h2,h3{ margin:0 0 10px; letter-spacing:-0.02em; }
+ul{ margin:0; padding-left:20px; }
+li{ margin:0 0 6px; }
 
 /* ---------- Layout ---------- */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 16px;
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 16px;
 }
 
-/* Header/Footer placeholders injected by script.js */
-#site-header, #site-footer {
-  width: 100%;
+#site-header, #site-footer{ width:100%; }
+
+/* ---------- Header / Menu ---------- */
+#site-header{
+  background:#ffffff;
+  border-bottom:1px solid rgba(0,0,0,0.08);
 }
 
-/* If your injected header uses these common classes, they’ll be styled */
-.site-header,
-header.site-header {
-  background: #ffffff;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+#site-header .header-inner,
+#site-header .inner,
+#site-header .wrap,
+#site-header .row,
+#site-header .container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:12px 16px;
 }
 
-.site-footer,
-footer.site-footer {
-  background: #ffffff;
-  border-top: 1px solid rgba(0,0,0,0.08);
+#site-header img{
+  max-height:140px;
+  width:100%;
+  object-fit:cover;
+  border-radius:14px;
+}
+
+#site-header nav,
+#site-header .nav,
+#site-header .menu{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:10px;
+}
+
+#site-header a{ text-decoration:none; }
+
+#site-header nav a,
+#site-header .nav a,
+#site-header .menu a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,0.14);
+  background:#fff;
+  color:#111;
+  font-weight:750;
+  transition:transform .06s ease, box-shadow .12s ease, background .12s ease;
+}
+
+#site-header nav a:hover,
+#site-header .nav a:hover,
+#site-header .menu a:hover{
+  box-shadow:0 6px 18px rgba(0,0,0,0.10);
+  transform:translateY(-1px);
+}
+
+#site-header a[aria-current="page"],
+#site-header a.active,
+#site-header a.is-active{
+  background:linear-gradient(180deg,#2b6bff 0%, #1f54ff 100%);
+  border-color:rgba(24,92,255,0.25);
+  color:#fff;
+}
+
+/* ---------- Footer ---------- */
+#site-footer{
+  background:#ffffff;
+  border-top:1px solid rgba(0,0,0,0.08);
+  margin-top:50px;
+}
+
+#site-footer .container,
+#site-footer .inner,
+#site-footer .wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:18px 16px;
+  color:rgba(0,0,0,0.65);
+  font-size:.92rem;
 }
 
 /* ---------- Hero ---------- */
-.hero {
-  padding: 28px 0 18px;
+.hero{
+  padding:26px 0 14px;
 }
-
-.hero h1, .hero h2 {
-  margin: 0 0 10px;
-  letter-spacing: -0.02em;
+.hero h1, .hero h2{
+  font-size:clamp(1.25rem, 1.05rem + 1vw, 1.8rem);
 }
-
-.hero h2 {
-  font-size: clamp(1.25rem, 1.1rem + 1vw, 1.7rem);
-}
-
-.hero p {
-  margin: 0;
-  color: rgba(0,0,0,0.75);
-  max-width: 70ch;
+.hero p{
+  color:rgba(0,0,0,0.75);
+  max-width:75ch;
 }
 
 /* ---------- Buttons ---------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.14);
-  background: #fff;
-  text-decoration: none;
-  font-weight: 650;
-  cursor: pointer;
-  user-select: none;
-  transition: transform 0.06s ease, box-shadow 0.12s ease, background 0.12s ease;
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,0.14);
+  background:#fff;
+  text-decoration:none;
+  font-weight:750;
+  cursor:pointer;
+  user-select:none;
+  transition:transform .06s ease, box-shadow .12s ease, background .12s ease;
+}
+.btn:hover{
+  box-shadow:0 6px 18px rgba(0,0,0,0.10);
+  transform:translateY(-1px);
+}
+.btn.primary{
+  background:linear-gradient(180deg,#2b6bff 0%, #1f54ff 100%);
+  color:#fff;
+  border-color:rgba(24,92,255,0.25);
 }
 
-.btn:hover {
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transform: translateY(-1px);
+/* ---------- Grid / Cards ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  gap:16px;
+  align-items:start;
+  padding:12px 0 40px;
 }
 
-.btn.primary {
-  border-color: rgba(24, 92, 255, 0.25);
-  background: linear-gradient(180deg, #2b6bff 0%, #1f54ff 100%);
-  color: #fff;
+.card{
+  background:#ffffff;
+  border:1px solid rgba(0,0,0,0.10);
+  border-radius:16px;
+  padding:16px 16px 18px;
+  box-shadow:0 10px 24px rgba(0,0,0,0.05);
 }
 
-/* ---------- Grid + Cards ---------- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 16px;
-  align-items: start;
-  padding: 12px 0 40px;
+.card h3{ margin:0 0 10px; letter-spacing:-0.01em; }
+.card p{ color:rgba(0,0,0,0.78); }
+
+.span-12{ grid-column: span 12; }
+.span-11{ grid-column: span 11; }
+.span-10{ grid-column: span 10; }
+.span-9 { grid-column: span 9; }
+.span-8 { grid-column: span 8; }
+.span-7 { grid-column: span 7; }
+.span-6 { grid-column: span 6; }
+.span-5 { grid-column: span 5; }
+.span-4 { grid-column: span 4; }
+.span-3 { grid-column: span 3; }
+.span-2 { grid-column: span 2; }
+.span-1 { grid-column: span 1; }
+
+.small{ font-size:.92rem; color:rgba(0,0,0,0.70); }
+
+@media (max-width:900px){
+  .span-7, .span-5{ grid-column: span 12; }
 }
 
-.card {
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.10);
-  border-radius: 16px;
-  padding: 16px 16px 18px;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+/* ---------- YouTube — FORCE 16:9 LANDSCAPE ---------- */
+.video-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:16 / 9;
+  background:#000;
+  border-radius:14px;
+  overflow:hidden;
 }
 
-.card h3 {
-  margin: 0 0 10px;
-  letter-spacing: -0.01em;
+.video-wrap iframe{
+  position:absolute;
+  inset:0;
+  width:100% !important;
+  height:100% !important;
+  border:0 !important;
+  display:block;
 }
 
-.card p {
-  margin: 0 0 10px;
-  color: rgba(0,0,0,0.78);
-}
-
-.small {
-  font-size: 0.92rem;
-  color: rgba(0,0,0,0.70);
-}
-
-/* Column spans */
-.span-12 { grid-column: span 12; }
-.span-11 { grid-column: span 11; }
-.span-10 { grid-column: span 10; }
-.span-9  { grid-column: span 9; }
-.span-8  { grid-column: span 8; }
-.span-7  { grid-column: span 7; }
-.span-6  { grid-column: span 6; }
-.span-5  { grid-column: span 5; }
-.span-4  { grid-column: span 4; }
-.span-3  { grid-column: span 3; }
-.span-2  { grid-column: span 2; }
-.span-1  { grid-column: span 1; }
-
-/* Responsive: stack cards on mobile */
-@media (max-width: 900px) {
-  .span-7, .span-5 { grid-column: span 12; }
-}
-
-/* ---------- ✅ YouTube / iframe FIX: force 16:9 landscape ---------- */
-/* Your HTML uses .video-wrap — we harden it */
-.video-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;      /* modern browsers */
-  height: auto;
-  background: #000;
-  border-radius: 14px;
-  overflow: hidden;
-}
-
-/* Kill portrait sizing from any old CSS */
-.video-wrap iframe {
-  position: absolute;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-  border: 0 !important;
-  display: block;
-}
-
-/* Fallback if aspect-ratio unsupported */
-@supports not (aspect-ratio: 16 / 9) {
-  .video-wrap {
-    height: 0;
-    padding-top: 56.25%; /* 16:9 */
+@supports not (aspect-ratio: 16 / 9){
+  .video-wrap{
+    height:0;
+    padding-top:56.25%;
   }
 }
 
-/* ---------- Optional: make any header banner image behave ---------- */
-/* If your injected header contains a banner image, these common selectors help */
-.site-banner,
-header img.banner,
-header img.site-banner,
-#site-header img {
-  max-height: 140px;     /* prevents huge banner */
-  width: 100%;
-  object-fit: cover;
-  border-radius: 14px;
+/* ---------- Mobile tweaks ---------- */
+@media (max-width:640px){
+  #site-header nav a,
+  #site-header .nav a,
+  #site-header .menu a,
+  .btn{
+    padding:9px 12px;
+    border-radius:10px;
+  }
 }
