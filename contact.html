@@ -26,18 +26,67 @@
 <main class="container">
   <section class="hero">
     <h2>Contact 💌</h2>
-    <p>Replace the email below with your real address.</p>
-    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
-      <a class="btn primary" href="mailto:hello@example.com?subject=GriffinDoor24%20Message">Email GriffinDoor24</a>
-      <a class="btn" href="https://www.youtube.com/@TheGriffinDoor24" target="_blank" rel="noopener">YouTube</a>
-    </div>
-    <p class="small" style="margin-top:10px"><strong>Change:</strong> hello@example.com</p>
+    <p>Send us a message and it will go straight to our inbox.</p>
+
+    <form action="thanks.html" method="GET" onsubmit="sendMail(event)">
+      <div class="grid">
+        <div class="card span-6">
+          <label>
+            Your name<br>
+            <input type="text" name="name" required style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1)">
+          </label>
+        </div>
+
+        <div class="card span-6">
+          <label>
+            Your email<br>
+            <input type="email" name="email" required style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1)">
+          </label>
+        </div>
+
+        <div class="card">
+          <label>
+            Message<br>
+            <textarea name="message" rows="5" required style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1)"></textarea>
+          </label>
+        </div>
+
+        <div class="card">
+          <button class="btn primary" type="submit">Send message</button>
+        </div>
+      </div>
+    </form>
   </section>
 
   <footer>© <span id="y"></span> GriffinDoor24</footer>
 </main>
 
 <script src="script.js"></script>
-<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById("y").textContent = new Date().getFullYear();
+
+function sendMail(e){
+  e.preventDefault();
+
+  const form = e.target;
+  const name = form.name.value;
+  const email = form.email.value;
+  const message = form.message.value;
+
+  const subject = encodeURIComponent("Message from GriffinDoor24 website");
+  const body = encodeURIComponent(
+    "Name: " + name + "\n" +
+    "Email: " + email + "\n\n" +
+    message
+  );
+
+  window.location.href = `mailto:admin@webstreamedia.com?subject=${subject}&body=${body}`;
+
+  // after a short delay, go to thanks page
+  setTimeout(() => {
+    window.location.href = "thanks.html";
+  }, 500);
+}
+</script>
 </body>
 </html>
