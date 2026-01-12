@@ -8,21 +8,23 @@
   <meta name="description" content="GriffinDoor24 — a bright, family-friendly community YouTube channel with weekly uploads and quick news updates." />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260112" />
 
   <link rel="canonical" id="canonical" href="">
   <meta property="og:url" id="ogurl" content="">
 </head>
 
 <body>
+
+  <!-- Header injected by script.js -->
   <div id="site-header"></div>
 
   <main class="container">
+
     <section class="hero">
       <h2>Weekly videos + bite-size community news 🎉</h2>
       <p>
         Welcome to <strong>GriffinDoor24</strong> — a bright, family-friendly local channel.
-        When we’re live, the player switches automatically.
       </p>
       <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
         <a class="btn primary" href="videos.html">Browse the Weekly Library</a>
@@ -31,43 +33,38 @@
     </section>
 
     <section class="grid">
+
+      <!-- FEATURE VIDEO -->
       <article class="card span-7">
-        <h3>Now playing</h3>
+        <h3>Featured this week</h3>
 
-        <!-- LIVE WRAP (hidden by default; script.js toggles it if live) -->
-        <div class="video-wrap" id="wrapLive" style="display:none; margin-top:12px;">
+        <div class="video-wrap" style="margin-top:12px;">
           <iframe
-            id="ytLive"
-            title="GriffinDoor24 livestream"
-            src="https://www.youtube.com/embed/live_stream?channel=UCuYQxoOH-MnuEQsxdywLzqw"
+            title="GriffinDoor24 featured video"
+            src="https://www.youtube-nocookie.com/embed/2D2TLWLu43Q?rel=0&modestbranding=1&playsinline=1"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
         </div>
 
-        <!-- UPLOADS WRAP (shown by default) -->
-        <div class="video-wrap" id="wrapUploads" style="margin-top:12px;">
-          <iframe
-            id="ytUploads"
-            title="GriffinDoor24 uploads"
-            src="https://www.youtube.com/embed/videoseries?list=UUuYQxoOH-MnuEQsxdywLzqw"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
-
-        <p id="liveBadge" class="small" style="margin:10px 0 0; font-weight:900; display:none;">
-          🔴 Live now!
+        <p class="small" style="margin-top:10px;">
+          This week’s featured community video.
         </p>
       </article>
 
+      <!-- SIDEBAR -->
       <aside class="card span-5">
         <h3>This week</h3>
         <p>Put a short “what’s on” blurb here each week.</p>
         <p style="margin-top:10px">Quick updates live in <strong>News</strong> as colourful text-only boxes.</p>
       </aside>
+
     </section>
+
   </main>
 
+  <!-- Footer injected by script.js -->
   <div id="site-footer"></div>
-  <script src="script.js"></script>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
