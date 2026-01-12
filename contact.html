@@ -28,10 +28,10 @@
     <h2>Contact 💌</h2>
     <p>Send us a message — it goes straight to our inbox.</p>
 
-    <form 
-      action="https://formspree.io/f/YOUR_FORM_ID" 
-      method="POST"
-    >
+    <form action="https://formspree.io/f/mpqadowr" method="POST">
+      <!-- Identify the source site in Formspree emails -->
+      <input type="hidden" name="site" value="GriffinDoor24">
+
       <!-- Redirect after submit -->
       <input type="hidden" name="_next" value="https://griffindoor24.netlify.app/thanks.html">
 
@@ -42,26 +42,32 @@
         <div class="card span-6">
           <label>
             Your name<br>
-            <input type="text" name="name" required style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1)">
+            <input type="text" name="name" required
+              style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1)">
           </label>
         </div>
 
         <div class="card span-6">
           <label>
             Your email<br>
-            <input type="email" name="email" required style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1)">
+            <input type="email" name="email" required
+              style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1)">
           </label>
         </div>
 
         <div class="card">
           <label>
             Message<br>
-            <textarea name="message" rows="5" required style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1);resize:vertical;"></textarea>
+            <textarea name="message" rows="5" required
+              style="width:100%;padding:10px;border-radius:10px;border:2px solid rgba(0,0,0,.1);resize:vertical;"></textarea>
           </label>
         </div>
 
-        <div class="card">
+        <div class="card" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
           <button class="btn primary" type="submit">Send message</button>
+          <span class="small" style="font-weight:900; color: var(--muted);">
+            (We don’t share your details.)
+          </span>
         </div>
       </div>
     </form>
@@ -70,9 +76,4 @@
   <footer>© <span id="y"></span> GriffinDoor24</footer>
 </main>
 
-<script src="script.js"></script>
-<script>
-document.getElementById("y").textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
+<script src="script.j
