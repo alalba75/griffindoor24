@@ -1,219 +1,71 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap");
+/* ============================================================
+   GriffinDoor24 — Performance Reset Styles
+   Jan 12 2026
+   ============================================================ */
 
-:root{
-  --bg:#fff7fb;
-  --ink:#1b1b1f;
-  --muted:#4a4a55;
-  --c1:#ff4d6d;
-  --c2:#ffa62b;
-  --c3:#2ec4b6;
-  --c4:#6c63ff;
-  --c5:#4dd4ff;
-  --shadow:0 12px 30px rgba(0,0,0,.12);
-  --radius:18px;
+/* ---------- Base Reset ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family:"Nunito",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  background:
-    radial-gradient(circle at 20% 10%, rgba(255,77,109,.20), transparent 40%),
-    radial-gradient(circle at 80% 0%, rgba(77,212,255,.22), transparent 45%),
-    radial-gradient(circle at 70% 90%, rgba(46,196,182,.18), transparent 45%),
-    var(--bg);
-  color:var(--ink);
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #0e0e11;
+  color: #f3f3f5;
+  line-height: 1.55;
 }
 
-.container{max-width:1100px;margin:0 auto;padding:24px}
+/* ---------- Layout ---------- */
 
-/* ---------- Banner Header ---------- */
-.banner-header{
-  width:100%;
-  overflow:hidden;
-  position:relative;
-  border-bottom:2px solid rgba(0,0,0,.06);
-  background:#000;
+.container {
+  max-width: 1100px;
+  padding: 0 16px;
+  margin: 0 auto;
 }
 
-.banner-img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  object-position:center;
-  display:block;
+.site-header {
+  background: #121218;
+  border-bottom: 1px solid #1f1f2a;
 }
 
-/* Nav overlay centered on banner */
-.banner-overlay{
-  position:absolute;
-  bottom:10px;
-  left:0;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  pointer-events:none;
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.banner-nav{
-  pointer-events:auto;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  justify-content:center;
-
-  background:rgba(255,255,255,.75);
-  backdrop-filter:blur(6px);
-  padding:10px 16px;
-  border-radius:999px;
-  box-shadow:0 8px 20px rgba(0,0,0,.15);
+.site-banner {
+  max-height: 56px;
+  width: auto;
+  display: block;
 }
 
-.banner-nav a{
-  text-decoration:none;
-  padding:10px 16px;
-  border-radius:999px;
-  border:2px solid rgba(0,0,0,.10);
-  background:rgba(255,255,255,.85);
-  box-shadow:0 8px 16px rgba(0,0,0,.08);
-  font-weight:900;
-  color:var(--ink);
-  transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+.nav {
+  display: flex;
+  gap: 18px;
 }
 
-.banner-nav a:hover{
-  transform:translateY(-2px);
-  box-shadow:0 12px 22px rgba(0,0,0,.18);
-  background:linear-gradient(
-    135deg,
-    rgba(255,77,109,.55),
-    rgba(255,166,43,.45),
-    rgba(46,196,182,.35)
-  );
-  border-color:transparent;
+.nav-link {
+  color: #aaa;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.banner-nav a.active{
-  border-color:transparent;
-  background:linear-gradient(
-    135deg,
-    rgba(255,77,109,.65),
-    rgba(255,166,43,.55),
-    rgba(46,196,182,.45)
-  );
+.nav-link:hover,
+.nav-link.is-active {
+  color: #fff;
 }
 
-/* Mobile banner */
-@media (max-width:720px){
-  .banner-img{height:160px;}
-  .banner-overlay{bottom:6px;}
-  .banner-nav{padding:8px 12px;}
-  .banner-nav a{padding:9px 12px;}
-}
+.site-footer {
+  margin-top: 60px;
+  padding: 24px 0;
+  border-top: 1px solid #1
 
-/* ---------- Hero ---------- */
-.hero{
-  margin-top:10px;
-  border-radius:var(--radius);
-  background:
-    radial-gradient(circle at 10% 20%, rgba(255,166,43,.35), transparent 40%),
-    radial-gradient(circle at 90% 10%, rgba(108,99,255,.25), transparent 45%),
-    radial-gradient(circle at 70% 90%, rgba(46,196,182,.25), transparent 45%),
-    rgba(255,255,255,.75);
-  border:2px solid rgba(0,0,0,.08);
-  box-shadow:var(--shadow);
-  padding:26px;
-}
-.hero h2{font-family:"Fredoka",cursive;font-size:clamp(1.6rem,2.5vw,2.3rem);margin:0 0 8px}
-.hero p{margin:0 0 16px;color:var(--muted);font-size:1.05rem;line-height:1.5}
-
-/* ---------- Buttons ---------- */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:12px 16px; border-radius:14px;
-  text-decoration:none; font-weight:900;
-  border:2px solid rgba(0,0,0,.10);
-  background:rgba(255,255,255,.85);
-  box-shadow:0 10px 18px rgba(0,0,0,.10);
-  color:var(--ink);
-  transition:transform .15s ease, box-shadow .15s ease;
-}
-.btn:hover{transform:translateY(-2px);box-shadow:0 14px 24px rgba(0,0,0,.16)}
-.btn.primary{
-  background:linear-gradient(135deg, rgba(255,77,109,.65), rgba(255,166,43,.55), rgba(77,212,255,.45));
-  border-color:transparent;
-}
-
-/* ---------- Grid & Cards ---------- */
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:18px}
-.card{
-  grid-column:span 12;
-  background:rgba(255,255,255,.85);
-  border:2px solid rgba(0,0,0,.08);
-  border-radius:var(--radius);
-  padding:18px;
-  box-shadow:0 10px 22px rgba(0,0,0,.10);
-}
-.card h3{font-family:"Fredoka",cursive;margin:0 0 8px}
-.card p{margin:0;color:var(--muted);line-height:1.5}
-@media (min-width: 880px){
-  .span-7{grid-column:span 7}
-  .span-5{grid-column:span 5}
-  .span-6{grid-column:span 6}
-  .span-12{grid-column:span 12}
-}
-
-/* ---------- Videos ---------- */
-.video-wrap{
-  position:relative;
-  width:100%;
-  aspect-ratio:16 / 9;
-  background:#000;
-  border-radius:14px;
-  overflow:hidden;
-}
-
-.video-wrap iframe{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  border:0;
-  display:block;
-}
-
-/* Fallback */
-@supports not (aspect-ratio: 16 / 9){
-  .video-wrap{ padding-top:56.25%; }
-}
-
-/* ---------- News ---------- */
-.newsGrid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-.newsBox{
-  grid-column:span 12;
-  border-radius:18px;
-  padding:16px;
-  border:2px solid rgba(0,0,0,.10);
-  background:rgba(255,255,255,.88);
-  box-shadow:0 10px 20px rgba(0,0,0,.10);
-}
-@media (min-width:880px){ .newsBox{grid-column:span 6} }
-.newsBox h4{margin:0 0 6px;font-family:"Fredoka",cursive;font-size:1.15rem}
-.newsMeta{color:var(--muted);font-weight:900;font-size:.95rem;margin-bottom:8px}
-
-/* ---------- Forms ---------- */
-label{font-weight:900}
-input,textarea{font:inherit}
-input:focus,textarea:focus{
-  outline:3px solid rgba(77,212,255,.35);
-  outline-offset:2px;
-}
-
-/* ---------- Footer ---------- */
-.site-footer{
-  margin:24px 0 14px;
-  color:var(--muted);
-  font-weight:900;
-  text-align:center;
-}
-.small{font-size:.95rem}
