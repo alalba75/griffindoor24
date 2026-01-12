@@ -28,29 +28,28 @@ body{
 .container{max-width:1100px;margin:0 auto;padding:24px}
 
 /* ---------- Banner Header ---------- */
-/* --- Final banner fit --- */
-.banner-header {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 2px solid rgba(0,0,0,.06);
-  background: #000; /* prevents white gaps while loading */
+.banner-header{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+  border-bottom:2px solid rgba(0,0,0,.06);
+  background:#000;
 }
 
-.banner-img {
-  width: 100%;
-  max-width: 100%;
-  height: 400px;           /* ideal strip height */
-  object-fit: cover;      /* fill width cleanly */
-  object-position: center;/* centre important content */
-  display: block;
+.banner-img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  object-position:center;
+  display:block;
 }
+
 /* Nav overlay centered on banner */
 .banner-overlay{
   position:absolute;
   bottom:10px;
   left:0;
-  width:70%;
+  width:100%;
   display:flex;
   justify-content:center;
   pointer-events:none;
@@ -104,15 +103,15 @@ body{
   );
 }
 
-/* Mobile adjustments */
+/* Mobile banner */
 @media (max-width:720px){
-  .banner-img{height:180px;}
+  .banner-img{height:160px;}
   .banner-overlay{bottom:6px;}
   .banner-nav{padding:8px 12px;}
   .banner-nav a{padding:9px 12px;}
 }
 
-/* ---------- Hero + Buttons ---------- */
+/* ---------- Hero ---------- */
 .hero{
   margin-top:10px;
   border-radius:var(--radius);
@@ -128,6 +127,7 @@ body{
 .hero h2{font-family:"Fredoka",cursive;font-size:clamp(1.6rem,2.5vw,2.3rem);margin:0 0 8px}
 .hero p{margin:0 0 16px;color:var(--muted);font-size:1.05rem;line-height:1.5}
 
+/* ---------- Buttons ---------- */
 .btn{
   display:inline-flex; align-items:center; justify-content:center;
   padding:12px 16px; border-radius:14px;
@@ -144,7 +144,7 @@ body{
   border-color:transparent;
 }
 
-/* ---------- Layout Cards ---------- */
+/* ---------- Grid & Cards ---------- */
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:18px}
 .card{
   grid-column:span 12;
@@ -163,15 +163,31 @@ body{
   .span-12{grid-column:span 12}
 }
 
-.embed{
+/* ---------- Videos ---------- */
+.video-wrap{
+  position:relative;
   width:100%;
-  aspect-ratio:16/9;
-  border:0;
+  aspect-ratio:16 / 9;
+  background:#000;
   border-radius:14px;
-  box-shadow:0 12px 24px rgba(0,0,0,.18);
+  overflow:hidden;
 }
 
-/* ---------- News Boxes ---------- */
+.video-wrap iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+
+/* Fallback */
+@supports not (aspect-ratio: 16 / 9){
+  .video-wrap{ padding-top:56.25%; }
+}
+
+/* ---------- News ---------- */
 .newsGrid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
 .newsBox{
   grid-column:span 12;
@@ -187,9 +203,7 @@ body{
 
 /* ---------- Forms ---------- */
 label{font-weight:900}
-input,textarea{
-  font:inherit;
-}
+input,textarea{font:inherit}
 input:focus,textarea:focus{
   outline:3px solid rgba(77,212,255,.35);
   outline-offset:2px;
@@ -203,40 +217,3 @@ input:focus,textarea:focus{
   text-align:center;
 }
 .small{font-size:.95rem}
-/* Force 16:9 landscape video */
-.video-wrap {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 ratio */
-}
-
-.video-wrap .embed {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-/* --- HARD FORCE YouTube embeds to 16:9 --- */
-.video-wrap{
-  position:relative;
-  width:100%;
-  aspect-ratio:16 / 9;   /* modern */
-  background:#000;
-  border-radius:14px;
-  overflow:hidden;
-}
-
-.video-wrap iframe{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  border:0;
-  display:block;
-}
-
-/* Fallback for older browsers that ignore aspect-ratio */
-@supports not (aspect-ratio: 16 / 9){
-  .video-wrap{ padding-top:56.25%; }
-}
