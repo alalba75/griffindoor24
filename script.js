@@ -36,4 +36,47 @@
   });
 })();
 
-// ---------- Canonical + OG URL In
+// ---------- Canonical + OG URL Injection ----------
+(function () {
+  const canonical = document.getElementById("canonical");
+  const ogurl = document.getElementById("ogurl");
+  const origin = location.origin;
+  const path = location.pathname.endsWith("/") ? "/index.html" : location.pathname;
+  const url = origin + path;
+
+  if (canonical) canonical.setAttribute("href", url);
+  if (ogurl) ogurl.setAttribute("content", url);
+})();
+
+// ---------- Livestream Detection (toggles WRAPPERS for correct 16:9) ----------
+(async () => {
+  const wrapLive = document.getElementById("wrapLive");
+  const wrapUploads = document.getElementById("wrapUploads");
+  const liveBadge = document.getElementById("liveBadge");
+
+  // Only run on pages that have these wrappers (index)
+  if (!wrapLive || !wrapUploads) return;
+
+  const channelId = "UCuYQxoOH-MnuEQsxdywLzqw";
+  const liveUrl = `https://www.youtube.com/embed/live_stream?channel=${channelId}`;
+  const oembed = `https://www.youtube.com/oembed?format=json&url=${encodeURIComponent(liveUrl)}`;
+
+  async function checkLive() {
+    try {
+      const res = await fetch(oembed, { method: "GET" });
+      if (!res.ok) throw new Error("Not live");
+      await res.json();
+
+      wrapLive.style.display = "block";
+      wrapUploads.style.display = "none";
+      if (liveBadge) liveBadge.style.display = "block";
+    } catch {
+      wrapLive.style.display = "none";
+      wrapUploads.style.display = "block";
+      if (liveBadge) liveBadge.style.display = "none";
+    }
+  }
+
+  await checkLive();
+  setInterval(checkLive, 60_000);
+})();
