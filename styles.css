@@ -27,39 +27,92 @@ body{
 
 .container{max-width:1100px;margin:0 auto;padding:24px}
 
-header{
-  position:sticky; top:0; z-index:50;
-  backdrop-filter:blur(10px);
-  background:rgba(255,247,251,.70);
+/* ---------- Banner Header ---------- */
+.banner-header{
+  width:100%;
+  overflow:hidden;
+  position:relative;
   border-bottom:2px solid rgba(0,0,0,.06);
 }
 
-.nav{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between}
-.brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit}
-.logo{
-  width:42px;height:42px;border-radius:14px;
-  background:conic-gradient(from 180deg,var(--c1),var(--c2),var(--c3),var(--c4),var(--c5),var(--c1));
-  box-shadow:0 10px 18px rgba(0,0,0,.15);
+.banner-img{
+  width:100%;
+  height:220px;          /* Adjust: 180–260 */
+  object-fit:cover;
+  object-position:center;
+  display:block;
 }
-.brand h1{font-family:"Fredoka",cursive;font-size:1.35rem;margin:0}
 
-.navlinks{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 0}
-.navlinks a{
+/* Nav overlay centered on banner */
+.banner-overlay{
+  position:absolute;
+  bottom:10px;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  pointer-events:none;
+}
+
+.banner-nav{
+  pointer-events:auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(6px);
+  padding:10px 16px;
+  border-radius:999px;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.banner-nav a{
   text-decoration:none;
-  padding:10px 14px;
+  padding:10px 16px;
   border-radius:999px;
   border:2px solid rgba(0,0,0,.10);
-  background:rgba(255,255,255,.75);
+  background:rgba(255,255,255,.85);
   box-shadow:0 8px 16px rgba(0,0,0,.08);
   font-weight:900;
-}
-.navlinks a.active{
-  border-color:transparent;
-  background:linear-gradient(135deg, rgba(255,77,109,.45), rgba(255,166,43,.45), rgba(46,196,182,.35));
+  color:var(--ink);
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
 }
 
+.banner-nav a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 22px rgba(0,0,0,.18);
+  background:linear-gradient(
+    135deg,
+    rgba(255,77,109,.55),
+    rgba(255,166,43,.45),
+    rgba(46,196,182,.35)
+  );
+  border-color:transparent;
+}
+
+.banner-nav a.active{
+  border-color:transparent;
+  background:linear-gradient(
+    135deg,
+    rgba(255,77,109,.65),
+    rgba(255,166,43,.55),
+    rgba(46,196,182,.45)
+  );
+}
+
+/* Mobile adjustments */
+@media (max-width:720px){
+  .banner-img{height:180px;}
+  .banner-overlay{bottom:6px;}
+  .banner-nav{padding:8px 12px;}
+  .banner-nav a{padding:9px 12px;}
+}
+
+/* ---------- Hero + Buttons ---------- */
 .hero{
-  margin-top:22px;
+  margin-top:10px;
   border-radius:var(--radius);
   background:
     radial-gradient(circle at 10% 20%, rgba(255,166,43,.35), transparent 40%),
@@ -80,12 +133,16 @@ header{
   border:2px solid rgba(0,0,0,.10);
   background:rgba(255,255,255,.85);
   box-shadow:0 10px 18px rgba(0,0,0,.10);
+  color:var(--ink);
+  transition:transform .15s ease, box-shadow .15s ease;
 }
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 24px rgba(0,0,0,.16)}
 .btn.primary{
   background:linear-gradient(135deg, rgba(255,77,109,.65), rgba(255,166,43,.55), rgba(77,212,255,.45));
   border-color:transparent;
 }
 
+/* ---------- Layout Cards ---------- */
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:18px}
 .card{
   grid-column:span 12;
@@ -101,6 +158,7 @@ header{
   .span-7{grid-column:span 7}
   .span-5{grid-column:span 5}
   .span-6{grid-column:span 6}
+  .span-12{grid-column:span 12}
 }
 
 .embed{
@@ -111,6 +169,7 @@ header{
   box-shadow:0 12px 24px rgba(0,0,0,.18);
 }
 
+/* ---------- News Boxes ---------- */
 .newsGrid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
 .newsBox{
   grid-column:span 12;
@@ -124,12 +183,21 @@ header{
 .newsBox h4{margin:0 0 6px;font-family:"Fredoka",cursive;font-size:1.15rem}
 .newsMeta{color:var(--muted);font-weight:900;font-size:.95rem;margin-bottom:8px}
 
-footer{margin:24px 0 14px;color:var(--muted);font-weight:900;text-align:center}
-.small{font-size:.95rem}
-.banner-img {
-  display: block;
-  width: 100vw;
-  height: 260px;      /* try 200–320 */
-  object-fit: cover;
-  margin: 0 auto;
+/* ---------- Forms ---------- */
+label{font-weight:900}
+input,textarea{
+  font:inherit;
 }
+input:focus,textarea:focus{
+  outline:3px solid rgba(77,212,255,.35);
+  outline-offset:2px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer{
+  margin:24px 0 14px;
+  color:var(--muted);
+  font-weight:900;
+  text-align:center;
+}
+.small{font-size:.95rem}
