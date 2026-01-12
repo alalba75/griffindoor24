@@ -34,21 +34,22 @@
       <article class="card span-7">
         <h3>Now playing</h3>
 
-        <div style="margin-top:12px">
+        <!-- LIVE WRAP (hidden by default; script.js toggles it if live) -->
+        <div class="video-wrap" id="wrapLive" style="display:none; margin-top:12px;">
           <iframe
             id="ytLive"
-            class="embed"
             title="GriffinDoor24 livestream"
-            style="display:none"
             src="https://www.youtube.com/embed/live_stream?channel=UCuYQxoOH-MnuEQsxdywLzqw"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
+        </div>
 
+        <!-- UPLOADS WRAP (shown by default) -->
+        <div class="video-wrap" id="wrapUploads" style="margin-top:12px;">
           <iframe
             id="ytUploads"
-            class="embed"
             title="GriffinDoor24 uploads"
-            src="https://www.youtube.com/embed?listType=playlist&list=UUuYQxoOH-MnuEQsxdywLzqw"
+            src="https://www.youtube.com/embed/videoseries?list=UUuYQxoOH-MnuEQsxdywLzqw"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
         </div>
@@ -61,6 +62,7 @@
       <aside class="card span-5">
         <h3>This week</h3>
         <p>Put a short “what’s on” blurb here each week.</p>
+        <p style="margin-top:10px">Quick updates live in <strong>News</strong> as colourful text-only boxes.</p>
       </aside>
     </section>
   </main>
