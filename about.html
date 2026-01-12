@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — GriffinDoor24</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="logo"></span><h1>GriffinDoor24</h1></a>
+      <nav class="navlinks">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="videos.html">Weekly Library</a>
+        <a data-nav href="news.html">News</a>
+        <a data-nav href="about.html">About</a>
+        <a data-nav href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <h2>About GriffinDoor24 ✨</h2>
+    <p>A bright, family-friendly community YouTube channel with weekly uploads and quick updates.</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
+      <a class="btn primary" href="https://www.youtube.com/@TheGriffinDoor24" target="_blank" rel="noopener">Visit the Channel</a>
+      <a class="btn" href="news.html">Read News</a>
+    </div>
+  </section>
+
+  <section class="grid">
+    <article class="card span-6">
+      <h3>What you’ll find</h3>
+      <p>Uploads archive, weekly library layout, and quick text-only news posts.</p>
+    </article>
+    <article class="card span-6">
+      <h3>Our vibe</h3>
+      <p>Colourful, positive, local, and lounge-room safe.</p>
+    </article>
+  </section>
+
+  <footer>© <span id="y"></span> GriffinDoor24</footer>
+</main>
+
+<script src="script.js"></script>
+<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
