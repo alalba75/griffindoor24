@@ -30,7 +30,8 @@
       <header class="topbar">
         <div class="topbar-inner">
           <a class="brand" href="index.html" aria-label="GriffinDoor24 Home">
-            <img src="assets/logo.png" alt="GriffinDoor24" class="brand-logo">
+            <img src="assets/banner.png" alt="GriffinDoor24" class="brand-logo">
+
           </a>
 
           <nav class="topnav" aria-label="Primary">
