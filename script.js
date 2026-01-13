@@ -67,3 +67,21 @@
 
 })();
 
+/* ===== Banner: force taller + no crop ===== */
+#site-header .banner-header{
+  width: 100%;
+  min-height: clamp(280px, 56vh, 700px); /* ~40% taller feel */
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#site-header .banner-img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* no cropping */
+  display: block;
+}
