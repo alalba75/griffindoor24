@@ -1,10 +1,9 @@
 /* ============================================================
-   GriffinDoor24 — script.js (TOP BAR HEADER)
-   Logo left + nav buttons right (mobile friendly)
+   GriffinDoor24 — script.js (Topbar header)
+   Logo left + evenly spaced nav + footer + canonical + active nav
    ============================================================ */
 
 (function () {
-
   function setCanonical() {
     const link = document.getElementById("canonical");
     const og = document.getElementById("ogurl");
@@ -30,8 +29,7 @@
       <header class="topbar">
         <div class="topbar-inner">
           <a class="brand" href="index.html" aria-label="GriffinDoor24 Home">
-            <img src="assets/banner.png" alt="GriffinDoor24" class="brand-logo">
-
+            <img src="assets/logo.png" alt="GriffinDoor24" class="brand-logo">
           </a>
 
           <nav class="topnav" aria-label="Primary">
@@ -58,5 +56,4 @@
 
   setCanonical();
   highlightActiveNav();
-
 })();
