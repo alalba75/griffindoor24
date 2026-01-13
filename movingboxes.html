@@ -5,19 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>Free Moving Boxes — GriffinDoor24</title>
-  <meta name="description" content="Find or offer free moving boxes in your local area." />
+  <meta name="description" content="Offer or find free moving boxes in your local area." />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260113-401" />
+  <link rel="stylesheet" href="styles.css?v=20260113-501" />
 
   <link rel="canonical" id="canonical" href="">
   <meta property="og:url" id="ogurl" content="">
 </head>
 
 <body>
+  <!-- Header injected by script.js -->
   <div id="site-header"></div>
 
   <main class="container">
+
     <section class="hero">
       <h2>Free Moving Boxes</h2>
       <p>A simple local noticeboard to help people find and offer free moving boxes.</p>
@@ -25,120 +27,102 @@
 
     <section class="grid">
 
+      <!-- LEFT: Info -->
       <article class="card span-7">
         <h3>Looking for boxes?</h3>
         <ul>
           <li>Local pickup only.</li>
           <li>Please be polite and timely.</li>
-          <li>Check back often — offers change quickly.</li>
+          <li>Offers change quickly — check back often.</li>
         </ul>
+
+        <p class="small" style="margin-top:10px;">
+          Want to offer boxes? Use the button on the right — it only asks for first name, street name, box count and size.
+        </p>
       </article>
 
+      <!-- RIGHT: Form toggle -->
       <aside class="card span-5">
         <h3>Have boxes to give away?</h3>
-        <p>Click below to offer your boxes.</p>
+        <p>Click the button to submit an offer.</p>
 
-        <button class="btn primary" id="showBoxForm">Offer boxes</button>
-<form id="boxForm"
-      name="box-offer"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      style="display:none; margin-top:16px;">
+        <button class="btn primary" id="showBoxForm" type="button" aria-expanded="false" aria-controls="boxFormWrap">
+          Offer boxes
+        </button>
 
-  <!-- Netlify required hidden field -->
-  <input type="hidden" name="form-name" value="box-offer">
+        <div id="boxFormWrap" style="display:none; margin-top:16px;">
+          <!-- Netlify form -->
+          <form name="box-offer" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <!-- Netlify required hidden field -->
+            <input type="hidden" name="form-name" value="box-offer">
 
-  <!-- Honeypot -->
-  <p style="display:none;">
-    <label>Don’t fill this out: <input name="bot-field"></label>
-  </p>
+            <!-- Honeypot -->
+            <p style="display:none;">
+              <label>Don’t fill this out: <input name="bot-field"></label>
+            </p>
 
-  <!-- Hidden recipient field -->
-  <input type="hidden" name="send_to" value="adralba@icloud.com">
+            <!-- Hidden recipient hint (configure actual email in Netlify Forms notifications) -->
+            <input type="hidden" name="send_to" value="adralba@icloud.com">
 
-  <p>
-    <label>First name<br>
-      <input type="text" name="first_name" required>
-    </label>
-  </p>
+            <p>
+              <label>First name<br>
+                <input type="text" name="first_name" required style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);">
+              </label>
+            </p>
 
-  <p>
-    <label>Street name<br>
-      <input type="text" name="street" required>
-    </label>
-  </p>
+            <p>
+              <label>Street name<br>
+                <input type="text" name="street_name" required style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);">
+              </label>
+            </p>
 
-  <p>
-    <label>Number of boxes<br>
-      <input type="number" name="box_count" min="1" max="100" required>
-    </label>
-  </p>
+            <p>
+              <label>Number of boxes<br>
+                <input type="number" name="box_count" min="1" max="200" required style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);">
+              </label>
+            </p>
 
-  <p>
-    <label>Box size<br>
-      <select name="box_size" required>
-        <option value="">Select size</option>
-        <option>Small</option>
-        <option>Medium</option>
-        <option>Large</option>
-      </select>
-    </label>
-  </p>
+            <p>
+              <label>Size of boxes<br>
+                <select name="box_size" required style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14); background:#fff;">
+                  <option value="">Select size</option>
+                  <option value="Small">Small</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Large">Large</option>
+                </select>
+              </label>
+            </p>
 
-  <button class="btn primary" type="submit">Submit offer</button>
-</form>
-
-          <p>
-            <label>First name<br>
-              <input type="text" name="first_name" required>
-            </label>
-          </p>
-
-          <p>
-            <label>Street name<br>
-              <input type="text" name="street" required>
-            </label>
-          </p>
-
-          <p>
-            <label>Number of boxes<br>
-              <input type="number" name="box_count" min="1" max="100" required>
-            </label>
-          </p>
-
-          <p>
-            <label>Box size<br>
-              <select name="box_size" required>
-                <option value="">Select size</option>
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-              </select>
-            </label>
-          </p>
-
-          <button class="btn primary" type="submit">Submit offer</button>
-        </form>
+            <button class="btn primary" type="submit">Submit offer</button>
+            <p class="small" style="margin-top:10px;">
+              Note: Emails are sent via Netlify Forms Notifications (set to <strong>adralba@icloud.com</strong> in your Netlify site settings).
+            </p>
+          </form>
+        </div>
       </aside>
 
     </section>
+
   </main>
 
+  <!-- Footer injected by script.js -->
   <div id="site-footer"></div>
 
-  <script src="script.js?v=20260113-401" defer></script>
+  <script src="script.js?v=20260113-501" defer></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function(){
+    document.addEventListener("DOMContentLoaded", function () {
       const btn = document.getElementById("showBoxForm");
-      const form = document.getElementById("boxForm");
+      const wrap = document.getElementById("boxFormWrap");
 
-      btn.addEventListener("click", () => {
-        form.style.display = form.style.display === "none" ? "block" : "none";
+      if (!btn || !wrap) return;
+
+      btn.addEventListener("click", function () {
+        const isOpen = wrap.style.display !== "none";
+        wrap.style.display = isOpen ? "none" : "block";
+        btn.setAttribute("aria-expanded", String(!isOpen));
       });
     });
   </script>
-
 </body>
 </html>
