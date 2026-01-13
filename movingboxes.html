@@ -8,7 +8,7 @@
   <meta name="description" content="Offer or find free moving boxes in your local area." />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260113-601" />
+  <link rel="stylesheet" href="styles.css?v=20260113-801" />
 
   <link rel="canonical" id="canonical" href="">
   <meta property="og:url" id="ogurl" content="">
@@ -37,63 +37,56 @@
 
       <aside class="card span-5">
         <h3>Have boxes to give away?</h3>
-        <p>Click the button to submit an offer.</p>
+        <p>Click below to open the offer form.</p>
 
-        <button class="btn primary" id="offerToggle" type="button" aria-expanded="false" aria-controls="offerPanel">
-          Offer boxes
-        </button>
+        <details class="offer-details">
+          <summary class="btn primary">Offer boxes</summary>
 
-        <!-- Panel is hidden via CSS class, not inline display:none -->
-        <div id="offerPanel" class="offer-panel" hidden>
-          <form name="box-offer" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="box-offer">
-            <p style="display:none;">
-              <label>Don’t fill this out: <input name="bot-field"></label>
-            </p>
+          <div class="offer-panel">
+            <form name="box-offer" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="box-offer">
 
-            <!-- Hidden recipient hint (real email notification is set in Netlify UI) -->
-            <input type="hidden" name="send_to" value="adralba@icloud.com">
+              <!-- Honeypot -->
+              <p style="display:none;">
+                <label>Don’t fill this out: <input name="bot-field"></label>
+              </p>
 
-            <p>
-              <label>First name<br>
-                <input type="text" name="first_name" required
-                  style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);">
-              </label>
-            </p>
+              <!-- Optional hidden recipient hint (not displayed) -->
+              <input type="hidden" name="send_to" value="hidden">
 
-            <p>
-              <label>Street name<br>
-                <input type="text" name="street_name" required
-                  style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);">
-              </label>
-            </p>
+              <p>
+                <label>First name<br>
+                  <input class="field" type="text" name="first_name" required>
+                </label>
+              </p>
 
-            <p>
-              <label>Number of boxes<br>
-                <input type="number" name="box_count" min="1" max="200" required
-                  style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);">
-              </label>
-            </p>
+              <p>
+                <label>Street name<br>
+                  <input class="field" type="text" name="street_name" required>
+                </label>
+              </p>
 
-            <p>
-              <label>Size of boxes<br>
-                <select name="box_size" required
-                  style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14); background:#fff;">
-                  <option value="">Select size</option>
-                  <option value="Small">Small</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Large">Large</option>
-                </select>
-              </label>
-            </p>
+              <p>
+                <label>Number of boxes<br>
+                  <input class="field" type="number" name="box_count" min="1" max="200" required>
+                </label>
+              </p>
 
-            <button class="btn primary" type="submit">Submit offer</button>
+              <p>
+                <label>Size of boxes<br>
+                  <select class="field" name="box_size" required>
+                    <option value="">Select size</option>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                  </select>
+                </label>
+              </p>
 
-            <p class="small" style="margin-top:10px;">
-              Email delivery is handled by Netlify Forms Notifications (set to <strong>adralba@icloud.com</strong> in Netlify).
-            </p>
-          </form>
-        </div>
+              <button class="btn primary" type="submit">Submit offer</button>
+            </form>
+          </div>
+        </details>
 
       </aside>
 
@@ -101,32 +94,20 @@
   </main>
 
   <div id="site-footer"></div>
+  <script src="script.js?v=20260113-801" defer></script>
 
-  <script src="script.js?v=20260113-601" defer></script>
-
-  <!-- Toggle script (runs even if header script fails) -->
-  <script>
-    (function(){
-      const btn = document.getElementById("offerToggle");
-      const panel = document.getElementById("offerPanel");
-      if(!btn || !panel) return;
-
-      btn.addEventListener("click", function(){
-        const isHidden = panel.hasAttribute("hidden");
-        if (isHidden) {
-          panel.removeAttribute("hidden");
-          btn.setAttribute("aria-expanded", "true");
-        } else {
-          panel.setAttribute("hidden", "");
-          btn.setAttribute("aria-expanded", "false");
-        }
-      });
-    })();
-  </script>
-
-  <!-- Tiny style so the panel looks like part of the card -->
   <style>
+    .offer-details summary{ list-style:none; cursor:pointer; }
+    .offer-details summary::-webkit-details-marker{ display:none; }
     .offer-panel{ margin-top:16px; }
+    .field{
+      width:100%;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,0.14);
+      background:#fff;
+      font-size:1rem;
+    }
   </style>
 </body>
 </html>
