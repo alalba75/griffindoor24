@@ -1,6 +1,6 @@
 /* ============================================================
-   GriffinDoor24 — script.js
-   Header / Footer injection + active nav + canonical helper
+   GriffinDoor24 — script.js (TOP BAR HEADER)
+   Logo left + nav buttons right (mobile friendly)
    ============================================================ */
 
 (function () {
@@ -27,10 +27,13 @@
   const headerTarget = document.getElementById("site-header");
   if (headerTarget) {
     headerTarget.innerHTML = `
-      <header class="banner-header">
-        <img src="assets/banner.png" alt="GriffinDoor24" class="banner-img">
-        <div class="banner-overlay">
-          <nav class="banner-nav" aria-label="Primary">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="index.html" aria-label="GriffinDoor24 Home">
+            <img src="assets/logo.png" alt="GriffinDoor24" class="brand-logo">
+          </a>
+
+          <nav class="topnav" aria-label="Primary">
             <a data-nav href="index.html">Home</a>
             <a data-nav href="videos.html">Weekly Library</a>
             <a data-nav href="news.html">News</a>
