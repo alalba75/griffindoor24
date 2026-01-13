@@ -1,7 +1,5 @@
 /* ============================================================
-   GriffinDoor24 — COMPLETE styles.css (NEW HEADER REDESIGN)
-   Top bar header: logo left + evenly spaced nav buttons
-   Mobile friendly (wrap + stack)
+   GriffinDoor24 — COMPLETE styles.css (Topbar + Logo)
    Updated Jan 13, 2026
    ============================================================ */
 
@@ -37,12 +35,7 @@ li{ margin:0 0 6px; }
 #site-header, #site-footer{ width:100%; }
 
 /* ============================================================
-   HEADER (NEW TOP BAR)
-   Requires script.js to inject:
-   <header class="topbar"><div class="topbar-inner">
-     <a class="brand"><img class="brand-logo"></a>
-     <nav class="topnav">...</nav>
-   </div></header>
+   HEADER — Top bar with logo left + evenly spaced nav
    ============================================================ */
 
 #site-header{
@@ -50,10 +43,7 @@ li{ margin:0 0 6px; }
   border-bottom:1px solid rgba(0,0,0,0.08);
 }
 
-/* Bar container */
-.topbar{
-  background:#ffffff;
-}
+.topbar{ background:#ffffff; }
 
 .topbar-inner{
   max-width:1100px;
@@ -61,16 +51,16 @@ li{ margin:0 0 6px; }
   padding:12px 16px;
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:16px;
 }
 
-/* Brand (logo left) */
+/* Logo block (top-left) */
 .brand{
-  display:inline-flex;
+  flex:0 0 auto;
+  display:flex;
   align-items:center;
   text-decoration:none;
-  flex:0 0 auto;
-  padding:6px 6px;
+  padding:6px 8px;
   border-radius:14px;
 }
 
@@ -78,36 +68,43 @@ li{ margin:0 0 6px; }
   outline:3px solid rgba(31,84,255,0.35);
   outline-offset:2px;
 }
-}
+
+/* Keep logo nice and “logo sized” */
 .brand-logo{
-  height:108px;        /* 2 × size */
-  width:auto;
-  display:block;
+  width:240px;      /* adjust if you want */
+  max-width:38vw;   /* responsive */
+  height:auto;
   object-fit:contain;
 }
 
-/* Nav (even spacing) */
+/* Nav fills remaining space */
 .topnav{
   flex:1 1 auto;
   display:flex;
-  flex-wrap:wrap;
   align-items:center;
-  justify-content:space-evenly;
-  gap:10px;
+  justify-content:space-between; /* even distribution */
+  gap:12px;
 }
 
+/* Equal-width buttons */
 .topnav a{
+  flex:1 1 0;
+  min-width:130px;
+  text-align:center;
+
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:10px 14px;
+
+  padding:12px 14px;
   border-radius:12px;
   border:1px solid rgba(0,0,0,0.14);
   background:#fff;
   color:#111;
-  font-weight:750;
+  font-weight:800;
   text-decoration:none;
   white-space:nowrap;
+
   transition:transform .06s ease, box-shadow .12s ease, background .12s ease;
 }
 
@@ -123,37 +120,47 @@ li{ margin:0 0 6px; }
   color:#fff;
 }
 
-/* Mobile: stack logo above nav + center buttons */
-@media (max-width:720px){
+/* Mobile: stack logo above buttons, wrap into rows */
+@media (max-width:820px){
   .topbar-inner{
     flex-direction:column;
     align-items:stretch;
+  }
+
+  .brand{ justify-content:center; }
+
+  .brand-logo{
+    width:min(340px, 86vw);
+  }
+
+  .topnav{
+    flex-wrap:wrap;
+    justify-content:center;
     gap:10px;
   }
-  .brand{
-    justify-content:center;
-  }
-  .brand-logo{
-    height:48px;
-  }
-  .topnav{
-    justify-content:center;
+
+  .topnav a{
+    flex:0 1 auto;
+    min-width:150px;
   }
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
+/* Small phones: full width buttons */
+@media (max-width:420px){
+  .topnav a{
+    width:100%;
+    min-width:0;
+  }
+}
 
+/* ---------- Footer ---------- */
 #site-footer{
   background:#ffffff;
   border-top:1px solid rgba(0,0,0,0.08);
   margin-top:50px;
 }
 
-#site-footer .container,
-#site-footer .inner,
-#site-footer .wrap{
+#site-footer .container{
   max-width:1100px;
   margin:0 auto;
   padding:18px 16px;
@@ -162,9 +169,7 @@ li{ margin:0 0 6px; }
 }
 
 /* ---------- Hero ---------- */
-.hero{
-  padding:26px 0 14px;
-}
+.hero{ padding:26px 0 14px; }
 .hero h1, .hero h2{
   font-size:clamp(1.25rem, 1.05rem + 1vw, 1.8rem);
 }
@@ -220,17 +225,8 @@ li{ margin:0 0 6px; }
 .card p{ color:rgba(0,0,0,0.78); }
 
 .span-12{ grid-column: span 12; }
-.span-11{ grid-column: span 11; }
-.span-10{ grid-column: span 10; }
-.span-9 { grid-column: span 9; }
-.span-8 { grid-column: span 8; }
-.span-7 { grid-column: span 7; }
-.span-6 { grid-column: span 6; }
-.span-5 { grid-column: span 5; }
-.span-4 { grid-column: span 4; }
-.span-3 { grid-column: span 3; }
-.span-2 { grid-column: span 2; }
-.span-1 { grid-column: span 1; }
+.span-7{ grid-column: span 7; }
+.span-5{ grid-column: span 5; }
 
 .small{ font-size:.92rem; color:rgba(0,0,0,0.70); }
 
@@ -258,34 +254,20 @@ li{ margin:0 0 6px; }
 }
 
 @supports not (aspect-ratio: 16 / 9){
-  .video-wrap{
-    height:0;
-    padding-top:56.25%;
-  }
+  .video-wrap{ height:0; padding-top:56.25%; }
 }
 
-/* ---------- Mobile tweaks (general) ---------- */
-@media (max-width:640px){
-  .btn{ padding:9px 12px; border-radius:10px; }
-  .topnav a{ padding:9px 12px; border-radius:10px; }
-}
-
-/* ============================================================
-   Contact page — message box width
-   ============================================================ */
-
+/* ---------- Contact textarea ---------- */
 form textarea,
 .contact-form textarea,
-#contact textarea {
+#contact textarea{
   width: 40%;
   min-width: 320px;
   max-width: 100%;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px){
   form textarea,
   .contact-form textarea,
-  #contact textarea {
-    width: 100%;
-  }
+  #contact textarea{ width:100%; }
 }
