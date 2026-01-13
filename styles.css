@@ -53,11 +53,12 @@ li{ margin:0 0 6px; }
 
 /* Header banner image — 40% taller + no cropping */
 #site-header img{
-  max-height:196px;      /* was 140px */
+  max-height:196px;   /* 40% taller than 140px */
   width:100%;
   height:auto;
-  object-fit:contain;    /* prevent cropping */
+  object-fit:contain; /* prevents cropping */
   border-radius:14px;
+}
 }
 
 #site-header nav,
