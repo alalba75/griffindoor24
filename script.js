@@ -5,8 +5,6 @@
 
 (function () {
 
-  /* ---------- Helpers ---------- */
-
   function setCanonical() {
     const link = document.getElementById("canonical");
     const og = document.getElementById("ogurl");
@@ -18,71 +16,43 @@
 
   function highlightActiveNav() {
     const path = location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll('[data-nav]').forEach(a => {
-      const href = a.getAttribute("href");
-      if (href === path) {
+    document.querySelectorAll("[data-nav]").forEach(a => {
+      if (a.getAttribute("href") === path) {
         a.classList.add("active");
         a.setAttribute("aria-current", "page");
       }
     });
   }
 
-  /* ---------- Inject Header ---------- */
-
-  const headerHTML = `
-<header class="banner-header">
-  <img src="assets/banner.png" alt="GriffinDoor24" class="banner-img">
-  <div class="banner-overlay">
-    <nav class="banner-nav" aria-label="Primary">
-      <a data-nav href="index.html">Home</a>
-      <a data-nav href="videos.html">Weekly Library</a>
-      <a data-nav href="news.html">News</a>
-      <a data-nav href="movingboxes.html">Moving Boxes</a>
-      <a data-nav href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-`;
-
   const headerTarget = document.getElementById("site-header");
-  if (headerTarget) headerTarget.innerHTML = headerHTML;
-
-  /* ---------- Inject Footer ---------- */
-
-  const year = new Date().getFullYear();
-
-  const footerHTML = `
-<div class="container">
-  <div class="small">© ${year} GriffinDoor24 — All rights reserved.</div>
-</div>
-`;
+  if (headerTarget) {
+    headerTarget.innerHTML = `
+      <header class="banner-header">
+        <img src="assets/banner.png" alt="GriffinDoor24" class="banner-img">
+        <div class="banner-overlay">
+          <nav class="banner-nav" aria-label="Primary">
+            <a data-nav href="index.html">Home</a>
+            <a data-nav href="videos.html">Weekly Library</a>
+            <a data-nav href="news.html">News</a>
+            <a data-nav href="movingboxes.html">Moving Boxes</a>
+            <a data-nav href="contact.html">Contact</a>
+          </nav>
+        </div>
+      </header>
+    `;
+  }
 
   const footerTarget = document.getElementById("site-footer");
-  if (footerTarget) footerTarget.innerHTML = footerHTML;
-
-  /* ---------- Run helpers ---------- */
+  if (footerTarget) {
+    const year = new Date().getFullYear();
+    footerTarget.innerHTML = `
+      <div class="container">
+        <div class="small">© ${year} GriffinDoor24 — All rights reserved.</div>
+      </div>
+    `;
+  }
 
   setCanonical();
   highlightActiveNav();
 
 })();
-
-/* ===== Banner: force taller + no crop ===== */
-#site-header .banner-header{
-  width: 100%;
-  min-height: clamp(280px, 56vh, 700px); /* ~40% taller feel */
-  position: relative;
-  overflow: hidden;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#site-header .banner-img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;   /* no cropping */
-  display: block;
-}
-#site-header .banner-header{ outline: 6px solid lime; }
