@@ -8,7 +8,7 @@
   <meta name="description" content="Find or offer free moving boxes in your local area." />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260113-300" />
+  <link rel="stylesheet" href="styles.css?v=20260113-401" />
 
   <link rel="canonical" id="canonical" href="">
   <meta property="og:url" id="ogurl" content="">
@@ -24,6 +24,7 @@
     </section>
 
     <section class="grid">
+
       <article class="card span-7">
         <h3>Looking for boxes?</h3>
         <ul>
@@ -35,13 +36,61 @@
 
       <aside class="card span-5">
         <h3>Have boxes to give away?</h3>
-        <p>Use the contact page and we’ll add your offer.</p>
-        <a class="btn primary" href="contact.html" style="margin-top:10px;">Contact us</a>
+        <p>Click below to offer your boxes.</p>
+
+        <button class="btn primary" id="showBoxForm">Offer boxes</button>
+
+        <form id="boxForm" style="display:none; margin-top:16px;">
+          <p>
+            <label>First name<br>
+              <input type="text" name="first_name" required>
+            </label>
+          </p>
+
+          <p>
+            <label>Street name<br>
+              <input type="text" name="street" required>
+            </label>
+          </p>
+
+          <p>
+            <label>Number of boxes<br>
+              <input type="number" name="box_count" min="1" max="100" required>
+            </label>
+          </p>
+
+          <p>
+            <label>Box size<br>
+              <select name="box_size" required>
+                <option value="">Select size</option>
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+              </select>
+            </label>
+          </p>
+
+          <button class="btn primary" type="submit">Submit offer</button>
+        </form>
       </aside>
+
     </section>
   </main>
 
   <div id="site-footer"></div>
-  <script src="script.js?v=20260113-300" defer></script>
+
+  <script src="script.js?v=20260113-401" defer></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      const btn = document.getElementById("showBoxForm");
+      const form = document.getElementById("boxForm");
+
+      btn.addEventListener("click", () => {
+        form.style.display = form.style.display === "none" ? "block" : "none";
+      });
+    });
+  </script>
+
 </body>
 </html>
