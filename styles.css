@@ -71,7 +71,7 @@ li{ margin:0 0 6px; }
 
 /* Keep logo nice and “logo sized” */
 .brand-logo {
-  height: 58px;   /* +15% from a 50px baseline */
+  height: 150px;   /* +15% from a 50px baseline */
   width: auto;
   display: block;
 }
