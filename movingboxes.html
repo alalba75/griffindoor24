@@ -39,8 +39,56 @@
         <p>Click below to offer your boxes.</p>
 
         <button class="btn primary" id="showBoxForm">Offer boxes</button>
+<form id="boxForm"
+      name="box-offer"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      style="display:none; margin-top:16px;">
 
-        <form id="boxForm" style="display:none; margin-top:16px;">
+  <!-- Netlify required hidden field -->
+  <input type="hidden" name="form-name" value="box-offer">
+
+  <!-- Honeypot -->
+  <p style="display:none;">
+    <label>Don’t fill this out: <input name="bot-field"></label>
+  </p>
+
+  <!-- Hidden recipient field -->
+  <input type="hidden" name="send_to" value="adralba@icloud.com">
+
+  <p>
+    <label>First name<br>
+      <input type="text" name="first_name" required>
+    </label>
+  </p>
+
+  <p>
+    <label>Street name<br>
+      <input type="text" name="street" required>
+    </label>
+  </p>
+
+  <p>
+    <label>Number of boxes<br>
+      <input type="number" name="box_count" min="1" max="100" required>
+    </label>
+  </p>
+
+  <p>
+    <label>Box size<br>
+      <select name="box_size" required>
+        <option value="">Select size</option>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+      </select>
+    </label>
+  </p>
+
+  <button class="btn primary" type="submit">Submit offer</button>
+</form>
+
           <p>
             <label>First name<br>
               <input type="text" name="first_name" required>
