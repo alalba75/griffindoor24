@@ -85,3 +85,4 @@
   object-fit: contain;   /* no cropping */
   display: block;
 }
+#site-header .banner-header{ outline: 6px solid lime; }
