@@ -291,7 +291,3 @@ form textarea,
     width: 100%;
   }
 }
-#site-header .banner-header{
-  outline: 8px solid lime !important;
-  background: #111 !important;
-}
