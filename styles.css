@@ -78,11 +78,12 @@ li{ margin:0 0 6px; }
   outline:3px solid rgba(31,84,255,0.35);
   outline-offset:2px;
 }
-
+}
 .brand-logo{
-  height:54px;
+  height:108px;        /* 2 × size */
   width:auto;
   display:block;
+  object-fit:contain;
 }
 
 /* Nav (even spacing) */
