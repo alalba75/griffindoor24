@@ -1,2 +1,13 @@
 [build]
   publish = "."
+[[redirects]]
+from = "/contact"
+to = "/contact.html"
+status = 301
+force = true
+
+[[redirects]]
+from = "/contact/"
+to = "/contact.html"
+status = 301
+force = true
