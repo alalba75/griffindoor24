@@ -70,11 +70,12 @@ li{ margin:0 0 6px; }
 }
 
 /* Keep logo nice and “logo sized” */
-.brand-logo{
-  width:240px;      /* adjust if you want */
-  max-width:38vw;   /* responsive */
-  height:auto;
-  object-fit:contain;
+.brand-logo {
+  height: 58px;   /* +15% from a 50px baseline */
+  width: auto;
+  display: block;
+}
+
 }
 
 /* Nav fills remaining space */
