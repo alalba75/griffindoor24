@@ -1,7 +1,7 @@
 /* ============================================================
    GriffinDoor24 — COMPLETE styles.css
-   Landscape video + restored UI
-   Updated Jan 12, 2026
+   Banner height increased + cropping removed
+   Updated Jan 13, 2026
    ============================================================ */
 
 /* ---------- Reset / Base ---------- */
@@ -51,10 +51,12 @@ li{ margin:0 0 6px; }
   padding:12px 16px;
 }
 
+/* Header banner image — 40% taller + no cropping */
 #site-header img{
-  max-height:140px;
+  max-height:196px;      /* was 140px */
   width:100%;
-  object-fit:cover;
+  height:auto;
+  object-fit:contain;    /* prevent cropping */
   border-radius:14px;
 }
 
@@ -229,20 +231,19 @@ li{ margin:0 0 6px; }
     border-radius:10px;
   }
 }
+
 /* ============================================================
    Contact page — message box width
    ============================================================ */
 
-/* Target textarea in contact forms */
 form textarea,
 .contact-form textarea,
 #contact textarea {
   width: 40%;
-  min-width: 320px;   /* prevents it becoming too tiny on smaller screens */
+  min-width: 320px;
   max-width: 100%;
 }
 
-/* On small screens, let it go full width */
 @media (max-width: 900px) {
   form textarea,
   .contact-form textarea,
