@@ -279,3 +279,63 @@ form input, form select{
   border:1px solid rgba(0,0,0,0.14);
   font-size:1rem;
 }
+/* ================================
+   Business Promos form alignment
+   (additive patch)
+   ================================ */
+
+.form-grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+
+.form-col-6{ grid-column: span 6; }
+.form-col-12{ grid-column: span 12; }
+
+@media (max-width: 900px){
+  .form-col-6{ grid-column: span 12; }
+}
+
+/* Force all controls to same box model + height */
+.input,
+select.input,
+textarea.input{
+  width: 100%;
+  display: block;
+  font: inherit;
+  line-height: 1.2;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: inherit;
+  margin: 0;
+}
+
+/* Make select match input height across browsers */
+select.input{
+  height: 44px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(255,255,255,.6) 50%),
+    linear-gradient(135deg, rgba(255,255,255,.6) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 18px,
+    calc(100% - 12px) 18px;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 34px; /* room for arrow */
+}
+
+textarea.input{
+  min-height: 120px;
+  resize: vertical;
+}
+
+label.small{
+  display: block;
+  margin: 0 0 6px;
+}
