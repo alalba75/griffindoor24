@@ -1,59 +1,56 @@
-/* ============================================================
-   GriffinDoor24 — script.js (Topbar header)
-   Logo left + evenly spaced nav + footer + canonical + active nav
-   ============================================================ */
+/* GriffinDoor24 — script.js (header/footer injector + canonical + nav active)
+   v=20260114-1100
+*/
 
 (function () {
-  function setCanonical() {
-    const link = document.getElementById("canonical");
-    const og = document.getElementById("ogurl");
-    if (!link || !og) return;
-    const url = location.origin + location.pathname;
-    link.href = url;
-    og.content = url;
+  const VERSION = "20260114-1100";
+
+  const navLinks = [
+    { href: "index.html", label: "Home" },
+    { href: "videos.html", label: "Videos" },
+    { href: "news.html", label: "News" },
+    { href: "businesspromos.html", label: "Business Promos" },
+    { href: "contact.html", label: "Contact" }
+  ];
+
+  function normalizePath(pathname) {
+    // Handle domain root ("/") and "/index.html"
+    const p = (pathname || "/").split("?")[0].split("#")[0];
+    if (p === "/" || p.endsWith("/")) return "index.html";
+    const last = p.split("/").pop();
+    return last || "index.html";
   }
 
-  function highlightActiveNav() {
-    const path = location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll("[data-nav]").forEach(a => {
-      if (a.getAttribute("href") === path) {
-        a.classList.add("active");
-        a.setAttribute("aria-current", "page");
-      }
-    });
+  function setCanonicalAndOG() {
+    const canonicalEl = document.getElementById("canonical");
+    const ogUrlEl = document.getElementById("ogurl");
+    const url = window.location.href.split("#")[0];
+
+    if (canonicalEl) canonicalEl.href = url;
+    if (ogUrlEl) ogUrlEl.content = url;
   }
 
-  const headerTarget = document.getElementById("site-header");
-  if (headerTarget) {
-    headerTarget.innerHTML = `
-      <header class="topbar">
-        <div class="topbar-inner">
-          <a class="brand" href="index.html" aria-label="GriffinDoor24 Home">
-            <img src="assets/logo.png" alt="GriffinDoor24" class="brand-logo">
+  function buildHeader(activeFile) {
+    const linksHtml = navLinks.map(l => {
+      const isActive =
+        (activeFile === "index.html" && l.href === "index.html") ||
+        activeFile === l.href;
+      return `<a class="nav-link${isActive ? " active" : ""}" href="${l.href}">${l.label}</a>`;
+    }).join("");
+
+    return `
+      <header class="site-header">
+        <div class="topbar">
+          <a class="brand" href="index.html" aria-label="GriffinDoor24 home">
+            <img class="brand-logo" src="assets/logo.png" alt="GriffinDoor24 logo">
+            <span class="brand-name">GriffinDoor24</span>
           </a>
 
-          <nav class="topnav" aria-label="Primary">
-            <a data-nav href="index.html">Home</a>
-            <a data-nav href="videos.html">Weekly Library</a>
-            <a data-nav href="news.html">News</a>
-            <a data-nav href="movingboxes.html">Moving Boxes</a>
-            <a data-nav href="contact.html">Contact</a>
+          <nav class="nav-links" aria-label="Primary">
+            ${linksHtml}
           </nav>
-        </div>
-      </header>
-    `;
-  }
 
-  const footerTarget = document.getElementById("site-footer");
-  if (footerTarget) {
-    const year = new Date().getFullYear();
-    footerTarget.innerHTML = `
-      <div class="container">
-        <div class="small">© ${year} GriffinDoor24 — All rights reserved.</div>
-      </div>
-    `;
-  }
-
-  setCanonical();
-  highlightActiveNav();
-})();
+          <a class="nav-youtube" href="https://www.youtube.com/@TheGriffinDoor24" target="_blank" rel="noopener">
+            YouTube
+          </a>
+        </div
