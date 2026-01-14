@@ -8,7 +8,7 @@
   <meta name="description" content="Local business promos and community services showcased on GriffinDoor24. Submit your business to be featured." />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260113-300" />
+  <link rel="stylesheet" href="styles.css?v=20260114-2600" />
 
   <link rel="canonical" id="canonical" href="">
   <meta property="og:url" id="ogurl" content="">
@@ -21,23 +21,17 @@
     <section class="hero">
       <h2>Business Promos 🤝</h2>
       <p>Showcasing local businesses, tradies, clubs, and community services — simple, friendly, and local.</p>
-      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
-        <a class="btn primary" href="#submit">Add my business</a>
-        <a class="btn" href="#featured">Browse promos</a>
-      </div>
       <p class="small" style="margin-top:10px; opacity:.9">
         Note: Listings are curated. We keep it community-friendly and scam-free.
       </p>
     </section>
 
-    <!-- Featured promos -->
     <section id="featured" class="grid" style="margin-top:18px">
       <article class="card span-7">
         <h3>Featured promos</h3>
-        <p class="small" style="margin-top:6px">Examples (replace these with real local listings as you add them).</p>
+        <p class="small" style="margin-top:6px">Examples (replace with real listings).</p>
 
         <div style="display:grid; gap:12px; margin-top:12px">
-
           <div class="card" style="padding:14px">
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px">
               <div>
@@ -49,83 +43,51 @@
             <p style="margin-top:10px">
               A short blurb about the business. Keep it factual: what they do, where they are, why locals love it.
             </p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
-              <a class="btn" href="#" onclick="return false;">Website</a>
-              <a class="btn" href="#" onclick="return false;">Call</a>
-              <a class="btn" href="#" onclick="return false;">Map</a>
-            </div>
           </div>
-
-          <div class="card" style="padding:14px">
-            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px">
-              <div>
-                <h4 style="margin:0">Example: Local Handyman</h4>
-                <p class="small" style="margin:6px 0 0">Repairs • Odd jobs • Small renovations</p>
-              </div>
-              <span class="pill">Services</span>
-            </div>
-            <p style="margin-top:10px">
-              Another example listing. When you’re ready, I can give you a neat pattern for adding real listings quickly.
-            </p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
-              <a class="btn" href="#" onclick="return false;">Facebook</a>
-              <a class="btn" href="#" onclick="return false;">Email</a>
-            </div>
-          </div>
-
         </div>
       </article>
 
       <aside class="card span-5">
         <h3>How it works</h3>
         <ul style="margin:10px 0 0; padding-left:18px">
-          <li>Submit your business details below</li>
+          <li>Submit your business details</li>
           <li>We review for legitimacy + community fit</li>
           <li>If approved, we publish a promo card and/or include it in a video shout-out</li>
         </ul>
-
-        <div class="card" style="margin-top:14px; padding:14px">
-          <h4 style="margin:0">Good fits</h4>
-          <p class="small" style="margin:8px 0 0">
-            Local food, trades, tutoring, community clubs, events, small services, and family-friendly businesses.
-          </p>
-        </div>
       </aside>
     </section>
 
-    <!-- Submission form -->
     <section id="submit" class="card" style="margin-top:18px">
       <h3>Add my business</h3>
       <p class="small" style="margin-top:6px">
         This form uses <strong>Netlify Forms</strong>. Submissions go to your Netlify dashboard (Forms tab).
       </p>
 
-      <form name="business-promos" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
-        <!-- required hidden input for Netlify -->
+      <form class="bp-form" name="business-promos" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
         <input type="hidden" name="form-name" value="business-promos" />
         <p style="display:none">
           <label>Don’t fill this out: <input name="bot-field" /></label>
         </p>
 
-        <div class="grid" style="margin-top:10px">
-          <div class="span-6">
+        <div class="bp-grid" style="margin-top:10px">
+          <div class="bp-col-6">
             <label class="small" for="contactName">Your name</label>
-            <input id="contactName" name="contactName" required class="input" autocomplete="name" />
+            <input id="contactName" name="contactName" required class="bp-control" autocomplete="name" />
           </div>
 
-          <div class="span-6">
+          <div class="bp-col-6">
             <label class="small" for="contactEmail">Your email</label>
-            <input id="contactEmail" name="contactEmail" type="email" required class="input" autocomplete="email" />
+            <input id="contactEmail" name="contactEmail" type="email" required class="bp-control" autocomplete="email" />
           </div>
 
-          <div class="span-6">
+          <div class="bp-col-6">
             <label class="small" for="businessName">Business name</label>
-            <input id="businessName" name="businessName" required class="input" />
+            <input id="businessName" name="businessName" required class="bp-control" />
           </div>
 
-          <div class="span-6">
+          <div class="bp-col-6">
             <label class="small" for="category">Category</label>
-            <select id="category" name="category" required class="input">
+            <select id="category" name="category" required class="bp-control">
               <option value="">Choose…</option>
               <option>Food & Drink</option>
               <option>Trades & Repairs</option>
@@ -138,42 +100,45 @@
             </select>
           </div>
 
-          <div class="span-6">
+          <div class="bp-col-6">
             <label class="small" for="suburb">Suburb / Area</label>
-            <input id="suburb" name="suburb" required class="input" placeholder="e.g., Newstead" />
+            <input id="suburb" name="suburb" required class="bp-control" placeholder="e.g., Newstead" />
           </div>
 
-          <div class="span-6">
+          <div class="bp-col-6">
             <label class="small" for="phone">Phone (optional)</label>
-            <input id="phone" name="phone" class="input" autocomplete="tel" />
+            <input id="phone" name="phone" class="bp-control" autocomplete="tel" />
           </div>
 
-          <div class="span-6">
-            <label class="small" for="website">Website / Booking link (optional)</label>
-            <input id="website" name="website" class="input" placeholder="https://…" />
+          <div class="bp-col-6">
+            <label class="small" for="website">Website (optional)</label>
+            <input id="website" name="website" class="bp-control" placeholder="https://…" />
           </div>
 
-          <div class="span-6">
+          <div class="bp-col-6">
             <label class="small" for="social">Social link (optional)</label>
-            <input id="social" name="social" class="input" placeholder="Facebook / Instagram / TikTok" />
+            <input id="social" name="social" class="bp-control" placeholder="Facebook / Instagram / TikTok" />
           </div>
 
-          <div class="span-12">
+          <div class="bp-col-12">
             <label class="small" for="blurb">What do you offer? (short blurb)</label>
-            <textarea id="blurb" name="blurb" required class="input" rows="5"
+            <textarea id="blurb" name="blurb" required class="bp-control" rows="5"
               placeholder="Keep it short: what you do, who it’s for, and any local specials."></textarea>
           </div>
 
-          <div class="span-12">
-            <label style="display:flex; gap:10px; align-items:flex-start">
-              <input type="checkbox" name="consent" required style="margin-top:4px">
-              <span class="small">
-                I confirm this is a legitimate local business/service and I consent to GriffinDoor24 publishing these details.
-              </span>
-            </label>
+          <!-- CONSENT: boxed + forced LEFT -->
+          <div class="bp-col-12">
+            <div class="bp-consent-card">
+              <label class="bp-consent-row">
+                <input class="bp-consent-check" type="checkbox" name="consent" required>
+                <span class="small bp-consent-text">
+                  I confirm this is a legitimate local business/service and I consent to GriffinDoor24 publishing these details.
+                </span>
+              </label>
+            </div>
           </div>
 
-          <div class="span-12" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:6px">
+          <div class="bp-col-12" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:6px">
             <button class="btn primary" type="submit">Submit business</button>
             <a class="btn" href="#featured">Back to promos</a>
           </div>
