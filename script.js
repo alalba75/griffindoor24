@@ -1,8 +1,8 @@
-/* GriffinDoor24 — script.js (safe shell injector)
+﻿/* GriffinDoor24 — script.js (safe shell injector)
    Purpose:
    - Inject header + footer into #site-header / #site-footer
    - Keep existing page layout intact
-   - Add Business Promos nav link
+   - Provide a consistent nav across all pages
    - Provide minimal fallback CSS ONLY for the header/footer (won't rewrite your site)
 */
 
@@ -12,6 +12,7 @@
     { href: "videos.html", label: "Videos" },
     { href: "news.html", label: "News" },
     { href: "businesspromos.html", label: "Business Promos" },
+    { href: "schoolstuff.html", label: "School Stuff" },
     { href: "contact.html", label: "Contact" }
   ];
 
@@ -41,7 +42,7 @@
   background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14);
 }
 .gd24-brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; font-weight:900; }
-.gd24-brand img{ width:44px; height:44px; object-fit:contain; display:block; }
+.gd24-brand img{ width:120px; height:auto; object-fit:contain; display:block; } /* logo.png 120px */
 .gd24-nav{ display:flex; flex:1; gap:10px; flex-wrap:wrap; justify-content:center; min-width:220px; }
 .gd24-nav a{
   text-decoration:none; font-weight:800; font-size:.95rem; color:inherit;
@@ -49,11 +50,7 @@
   border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.04);
 }
 .gd24-nav a.gd24-active{ border-color:rgba(255,42,79,.45); background:rgba(255,42,79,.18); }
-.gd24-yt{
-  text-decoration:none; font-weight:900; white-space:nowrap; color:inherit;
-  padding:9px 12px; border-radius:999px;
-  border:1px solid rgba(255,210,74,.35); background:rgba(255,210,74,.14);
-}
+
 .gd24-banner{
   margin-top:10px; border-radius:24px; overflow:hidden;
   border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.03);
@@ -79,8 +76,9 @@
   }
 
   function buildHeader(active) {
-    const links = NAV.map(l => {
-      const isActive = (active === "index.html" && l.href === "index.html") || (active === l.href);
+    const links = NAV.map((l) => {
+      const isActive =
+        (active === "index.html" && l.href === "index.html") || active === l.href;
       return `<a href="${l.href}" class="${isActive ? "gd24-active" : ""}">${l.label}</a>`;
     }).join("");
 
@@ -95,8 +93,6 @@
     <nav class="gd24-nav" aria-label="Primary">
       ${links}
     </nav>
-
-    <a class="gd24-yt" href="https://www.youtube.com/@TheGriffinDoor24" target="_blank" rel="noopener">YouTube</a>
   </div>
 
   <div class="gd24-banner">
@@ -113,8 +109,8 @@
     <div class="gd24-muted">© ${year} GriffinDoor24</div>
     <div style="display:flex; gap:12px; flex-wrap:wrap;">
       <a href="businesspromos.html">Business Promos</a>
+      <a href="schoolstuff.html">School Stuff</a>
       <a href="contact.html">Contact</a>
-      <a href="https://www.youtube.com/@TheGriffinDoor24" target="_blank" rel="noopener">YouTube</a>
     </div>
   </div>
 </footer>`;

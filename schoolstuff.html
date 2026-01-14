@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>School Stuff — GriffinDoor24</title>
+  <meta name="description" content="Community school information: books, uniforms, timetables and special events." />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=20260113-900" />
+
+  <link rel="canonical" id="canonical" href="">
+  <meta property="og:url" id="ogurl" content="">
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main class="container">
+
+    <section class="hero">
+      <h2>School Stuff</h2>
+      <p>Community questions and tips about local schools.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card span-12" id="schoolstuff">
+
+        <form name="schoolstuff"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              action="/thanks.html">
+
+          <input type="hidden" name="form-name" value="schoolstuff">
+
+          <p style="display:none;">
+            <label>Don’t fill this out: <input name="bot-field"></label>
+          </p>
+
+          <p>
+            <label>Subject<br>
+              <select name="subject" required
+                style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);">
+                <option value="" disabled selected>Select one…</option>
+                <option>Books</option>
+                <option>Uniforms</option>
+                <option>Timetables</option>
+                <option>Special events</option>
+              </select>
+            </label>
+          </p>
+
+          <p>
+            <label>Question / Topic<br>
+              <input type="text" name="question" required
+                style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);">
+            </label>
+          </p>
+
+          <p>
+            <label>Details<br>
+              <textarea name="details" rows="6" required
+                style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);"></textarea>
+            </label>
+          </p>
+
+          <p>
+            <label>Your name (optional)<br>
+              <input type="text" name="name"
+                style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);">
+            </label>
+          </p>
+
+          <p>
+            <label>Email (optional)<br>
+              <input type="email" name="email"
+                style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);">
+            </label>
+          </p>
+
+          <p>
+            <label>Suburb (optional)<br>
+              <input type="text" name="suburb"
+                style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(0,0,0,0.14);">
+            </label>
+          </p>
+
+          <p>
+            <label>
+              <input type="checkbox" name="consent" required>
+              I won’t include private personal information about students, families or staff.
+            </label>
+          </p>
+
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+
+      </article>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="script.js?v=20260113-900" defer></script>
+</body>
+</html>
