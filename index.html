@@ -8,66 +8,152 @@
   <meta name="description" content="GriffinDoor24 — a bright, family-friendly community YouTube channel with weekly uploads and quick news updates." />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Keep your existing stylesheet if you want -->
+  <link rel="stylesheet" href="styles.css?v=20260114-1205" />
 
-  <link rel="canonical" id="canonical" href="">
-  <meta property="og:url" id="ogurl" content="">
-</head>
+  <!-- Minimal “critical CSS” so the header/nav/video work even if styles.css/script.js are a mess -->
+  <style>
+    :root{
+      --wrap: 1120px;
+      --line: rgba(255,255,255,.14);
+      --panel: rgba(255,255,255,.06);
+      --text: #eef2ff;
+      --muted: rgba(255,255,255,.78);
+      --accent: #ff2a4f;
+      --r: 18px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; }
+    body{
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color: var(--text);
+      background: #0b0f1a;
+    }
+    a{ color: inherit; }
 
-<body>
-  <div id="site-header"></div>
+    .container{
+      width: min(var(--wrap), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 18px 0 34px;
+    }
 
-  <main class="container">
-    <section class="hero">
-      <h2>Weekly videos + bite-size community news 🎉</h2>
-      <p>
-        Welcome to <strong>GriffinDoor24</strong> — a bright, family-friendly local channel.
-        When we’re live, the player switches automatically.
-      </p>
-      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
-        <a class="btn primary" href="videos.html">Browse the Weekly Library</a>
-        <a class="btn" href="https://www.youtube.com/@TheGriffinDoor24" target="_blank" rel="noopener">Watch on YouTube</a>
-      </div>
-    </section>
+    /* Header / Nav (works without script.js) */
+    .site-header{
+      width: min(var(--wrap), calc(100% - 32px));
+      margin: 14px auto 12px;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      text-decoration:none;
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
+    .brand img{
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      display:block;
+    }
+    .nav-links{
+      display:flex;
+      flex: 1;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      min-width: 220px;
+    }
+    .nav-links a{
+      text-decoration:none;
+      font-weight: 800;
+      font-size: .95rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .nav-links a.active{
+      border-color: rgba(255,42,79,.45);
+      background: rgba(255,42,79,.18);
+    }
+    .nav-yt{
+      text-decoration:none;
+      font-weight: 900;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,210,74,.35);
+      background: rgba(255,210,74,.14);
+      white-space: nowrap;
+    }
 
-    <section class="grid">
-      <article class="card span-7">
-        <h3>Now playing</h3>
+    .banner{
+      margin-top: 10px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .banner img{ width:100%; height:auto; display:block; }
 
-        <!-- LIVE WRAP (hidden by default; script.js toggles it if live) -->
-        <div class="video-wrap" id="wrapLive" style="display:none; margin-top:12px;">
-          <iframe
-            id="ytLive"
-            title="GriffinDoor24 livestream"
-            src="https://www.youtube.com/embed/live_stream?channel=UCuYQxoOH-MnuEQsxdywLzqw"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
+    /* Your existing layout (hero + grid + cards) */
+    .hero{
+      padding: 18px;
+      border-radius: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+    .hero h2{ margin:0; font-size: clamp(1.35rem, 2.4vw, 1.85rem); }
+    .hero p{ margin:10px 0 0; color: var(--muted); line-height: 1.5; }
 
-        <!-- UPLOADS WRAP (shown by default) -->
-        <div class="video-wrap" id="wrapUploads" style="margin-top:12px;">
-          <iframe
-            id="ytUploads"
-            title="GriffinDoor24 uploads"
-            src="https://www.youtube.com/embed/videoseries?list=UUuYQxoOH-MnuEQsxdywLzqw"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight: 900;
+    }
+    .btn.primary{
+      border-color: rgba(255,42,79,.45);
+      background: rgba(255,42,79,.18);
+    }
 
-        <p id="liveBadge" class="small" style="margin:10px 0 0; font-weight:900; display:none;">
-          🔴 Live now!
-        </p>
-      </article>
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .card{
+      padding: 16px;
+      border-radius: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+    .span-7{ grid-column: span 7; }
+    .span-5{ grid-column: span 5; }
+    @media (max-width: 900px){
+      .span-7, .span-5{ grid-column: span 12; }
+      .nav-links{ justify-content: flex-start; }
+    }
 
-      <aside class="card span-5">
-        <h3>This week</h3>
-        <p>Put a short “what’s on” blurb here each week.</p>
-        <p style="margin-top:10px">Quick updates live in <strong>News</strong> as colourful text-only boxes.</p>
-      </aside>
-    </section>
-  </main>
-
-  <div id="site-footer"></div>
-  <script src="script.js"></script>
-</body>
-</html>
+    /* Video: guaranteed 16:9 landscape */
+    .video-wrap{
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radi
