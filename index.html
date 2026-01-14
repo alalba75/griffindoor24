@@ -8,7 +8,7 @@
   <meta name="description" content="GriffinDoor24 — a bright, family-friendly community YouTube channel with weekly uploads and quick news updates." />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260113-300" />
+  <link rel="stylesheet" href="styles.css?v=20260114-1100" />
 
   <link rel="canonical" id="canonical" href="">
   <meta property="og:url" id="ogurl" content="">
@@ -35,7 +35,8 @@
         <div class="video-wrap gd24-click-to-play" style="margin-top:12px;"
              data-video="Yq1F7LvXwXQ" data-start="0" data-end="15">
           <button class="gd24-play-btn" type="button" aria-label="Play opener1 (15 seconds)">
-            ▶ Play opener1 (15s)
+            <span class="gd24-play-icon" aria-hidden="true">▶</span>
+            <span class="gd24-play-text">Play opener1 (15s)</span>
           </button>
         </div>
 
@@ -46,13 +47,22 @@
         <h3>This week</h3>
         <p>Put a short “what’s on” blurb here each week.</p>
         <p style="margin-top:10px">Quick updates live in <strong>News</strong> as colourful text-only boxes.</p>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+          <a class="btn" href="news.html">Read News</a>
+          <a class="btn primary" href="businesspromos.html">Business Promos</a>
+        </div>
+
+        <p class="small" style="margin-top:10px; opacity:.9">
+          Local businesses can submit listings for review.
+        </p>
       </aside>
     </section>
   </main>
 
   <div id="site-footer"></div>
 
-  <!-- Minimal page-local script (safe; doesn’t touch your existing script.js) -->
+  <!-- Click-to-play handler (kept on index so it never affects other pages) -->
   <script>
     (function () {
       function buildYouTubeURL(videoId, start, end) {
@@ -90,6 +100,6 @@
     })();
   </script>
 
-  <script src="script.js?v=20260113-300" defer></script>
+  <script src="script.js?v=20260114-1100" defer></script>
 </body>
 </html>
