@@ -126,7 +126,7 @@
 
     if (headerHost) headerHost.innerHTML = buildHeader(active);
     if (footerHost) footerHost.innerHTML = buildFooter();
-  }
+  gd24PromoteLiveToMainPlayer();}
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", run);
@@ -134,3 +134,28 @@
     run();
   }
 })();
+
+async function gd24PromoteLiveToMainPlayer() {
+  const channelId = "UCHZh2Iy7Bo7RzH-8zi42MHA"; // REPLACE with your real channel ID
+
+  const page = (location.pathname.split("/").pop() || "index.html");
+  if (page !== "videos.html") return;
+
+  const wrap = document.getElementById("gd24-main-player");
+  if (!wrap) return;
+
+  const iframe = wrap.querySelector("iframe");
+  if (!iframe) return;
+
+  try {
+    const r = await fetch(`/.netlify/functions/live?channelId=${encodeURIComponent(channelId)}`, { cache: "no-store" });
+    const j = await r.json();
+
+    if (j && j.live && j.videoId) {
+      iframe.src = `https://www.youtube-nocookie.com/embed/${j.videoId}?rel=0&modestbranding=1&playsinline=1`;
+      iframe.title = j.title || "GriffinDoor24 live stream";
+    }
+  } catch (e) {}
+}
+
+
