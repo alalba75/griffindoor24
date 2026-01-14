@@ -8,214 +8,14 @@
   <meta name="description" content="GriffinDoor24 — a bright, family-friendly community YouTube channel with weekly uploads and quick news updates." />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=20260113-300" />
 
-  <!-- You can keep this. If styles.css is broken/missing it won't stop this page from rendering. -->
-  <link rel="stylesheet" href="styles.css?v=20260114-1205" />
-
-  <style>
-    :root{
-      --wrap: 1120px;
-      --line: rgba(255,255,255,.14);
-      --panel: rgba(255,255,255,.06);
-      --text: #eef2ff;
-      --muted: rgba(255,255,255,.78);
-      --r: 18px;
-    }
-    *{ box-sizing:border-box; }
-    html,body{ margin:0; padding:0; }
-    body{
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      color: var(--text);
-      background: #0b0f1a;
-    }
-    a{ color: inherit; }
-
-    .container{
-      width: min(var(--wrap), calc(100% - 32px));
-      margin: 0 auto;
-      padding: 18px 0 34px;
-    }
-
-    .site-header{
-      width: min(var(--wrap), calc(100% - 32px));
-      margin: 14px auto 12px;
-    }
-    .topbar{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      padding: 12px 14px;
-      border-radius: 999px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      flex-wrap: wrap;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      text-decoration:none;
-      font-weight: 900;
-      letter-spacing: .2px;
-    }
-    .brand img{
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      display:block;
-    }
-    .nav-links{
-      display:flex;
-      flex: 1;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      min-width: 220px;
-    }
-    .nav-links a{
-      text-decoration:none;
-      font-weight: 800;
-      font-size: .95rem;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
-    }
-    .nav-links a.active{
-      border-color: rgba(255,42,79,.45);
-      background: rgba(255,42,79,.18);
-    }
-    .nav-yt{
-      text-decoration:none;
-      font-weight: 900;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,210,74,.35);
-      background: rgba(255,210,74,.14);
-      white-space: nowrap;
-    }
-
-    .banner{
-      margin-top: 10px;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-    }
-    .banner img{ width:100%; height:auto; display:block; }
-
-    .hero{
-      padding: 18px;
-      border-radius: 24px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-    }
-    .hero h2{ margin:0; font-size: clamp(1.35rem, 2.4vw, 1.85rem); }
-    .hero p{ margin:10px 0 0; color: var(--muted); line-height: 1.5; }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      text-decoration:none;
-      font-weight: 900;
-    }
-    .btn.primary{
-      border-color: rgba(255,42,79,.45);
-      background: rgba(255,42,79,.18);
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-      margin-top: 14px;
-    }
-    .card{
-      padding: 16px;
-      border-radius: 24px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-    }
-    .span-7{ grid-column: span 7; }
-    .span-5{ grid-column: span 5; }
-    @media (max-width: 900px){
-      .span-7, .span-5{ grid-column: span 12; }
-      .nav-links{ justify-content: flex-start; }
-    }
-
-    /* Video: guaranteed 16:9 landscape */
-    .video-wrap{
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: var(--r);
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: rgba(0,0,0,.25);
-    }
-    .video-wrap iframe{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      border:0;
-    }
-
-    /* Click-to-play overlay */
-    .gd24-play-btn{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      border:0;
-      cursor:pointer;
-      display:grid;
-      place-items:center;
-      gap: 10px;
-      color:#fff;
-      background: linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.65));
-      font-weight: 900;
-    }
-    .gd24-play-icon{
-      width: 78px; height: 78px;
-      border-radius: 999px;
-      display:grid;
-      place-items:center;
-      background: rgba(255,255,255,.16);
-      border: 1px solid rgba(255,255,255,.22);
-      font-size: 28px;
-      line-height: 1;
-    }
-
-    .small{ color: rgba(255,255,255,.70); font-size: .92rem; line-height: 1.35; }
-  </style>
+  <link rel="canonical" id="canonical" href="">
+  <meta property="og:url" id="ogurl" content="">
 </head>
 
 <body>
-
-  <header class="site-header">
-    <div class="topbar">
-      <a class="brand" href="index.html" aria-label="GriffinDoor24 home">
-        <img src="assets/logo.png" alt="GriffinDoor24 logo">
-        <span>GriffinDoor24</span>
-      </a>
-
-      <nav class="nav-links" aria-label="Primary">
-        <a class="active" href="index.html">Home</a>
-        <a href="videos.html">Videos</a>
-        <a href="news.html">News</a>
-        <a href="businesspromos.html">Business Promos</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-
-      <a class="nav-yt" href="https://www.youtube.com/@TheGriffinDoor24" target="_blank" rel="noopener">YouTube</a>
-    </div>
-
-    <div class="banner">
-      <img src="assets/banner.png" alt="GriffinDoor24 banner">
-    </div>
-  </header>
+  <div id="site-header"></div>
 
   <main class="container">
     <section class="hero">
@@ -229,13 +29,13 @@
 
     <section class="grid">
       <article class="card span-7">
-        <h3 style="margin:0;">Featured this week</h3>
+        <h3>Featured this week</h3>
 
+        <!-- opener1 — click-to-play, forced 16:9 via your existing .video-wrap CSS -->
         <div class="video-wrap gd24-click-to-play" style="margin-top:12px;"
              data-video="Yq1F7LvXwXQ" data-start="0" data-end="15">
           <button class="gd24-play-btn" type="button" aria-label="Play opener1 (15 seconds)">
-            <span class="gd24-play-icon" aria-hidden="true">▶</span>
-            <span>Play opener1 (15s)</span>
+            ▶ Play opener1 (15s)
           </button>
         </div>
 
@@ -243,31 +43,21 @@
       </article>
 
       <aside class="card span-5">
-        <h3 style="margin:0;">This week</h3>
-        <p style="margin-top:10px;">Put a short “what’s on” blurb here each week.</p>
-        <p style="margin-top:10px;">Quick updates live in <strong>News</strong> as colourful text-only boxes.</p>
+        <h3>This week</h3>
+        <p>Put a short “what’s on” blurb here each week.</p>
+        <p style="margin-top:10px">Quick updates live in <strong>News</strong> as colourful text-only boxes.</p>
 
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
           <a class="btn" href="news.html">Read News</a>
           <a class="btn primary" href="businesspromos.html">Business Promos</a>
         </div>
-
-        <p class="small" style="margin-top:10px;">Local businesses can submit listings for review.</p>
       </aside>
     </section>
   </main>
 
-  <footer class="container" style="padding-top:0;">
-    <div class="card" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-      <div class="small">© 2026 GriffinDoor24</div>
-      <div class="small" style="display:flex; gap:12px; flex-wrap:wrap;">
-        <a href="businesspromos.html">Business Promos</a>
-        <a href="contact.html">Contact</a>
-        <a href="https://www.youtube.com/@TheGriffinDoor24" target="_blank" rel="noopener">YouTube</a>
-      </div>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
+  <!-- Page-local click loader so it never affects other pages -->
   <script>
     (function () {
       function buildYouTubeURL(videoId, start, end) {
@@ -305,5 +95,6 @@
     })();
   </script>
 
+  <script src="script.js?v=20260113-300" defer></script>
 </body>
 </html>
