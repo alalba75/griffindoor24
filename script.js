@@ -150,16 +150,22 @@ async function gd24PromoteLiveToMainPlayer() {
   try {
     const isLocal = location.hostname === "localhost" || location.hostname === "127.0.0.1";
     const fnBase = isLocal ? "https://griffindoor24.au" : "";
-    const liveUrl = `${fnBase}/.netlify/functions/live?channelId=${encodeURIComponent(channelId)}`;
+    const liveUrl = `${fnBase}/.netlify/functions/live?channelId=${encodeURIComponent(channelId)}&cb=${Date.now()}${isLocal ? "&debug=1" : ""}`;
     const r = await fetch(liveUrl, { cache: "no-store" });
     const j = await r.json();
 
     if (j && j.live && j.videoId) {
       iframe.src = `https://www.youtube-nocookie.com/embed/${j.videoId}?rel=0&modestbranding=1&playsinline=1`;
       iframe.title = j.title || "GriffinDoor24 live stream";
+    } else {
+      // Offline: clear to a harmless about:blank so we never show a stale ended stream
+      iframe.src = "about:blank";
+      iframe.title = "GriffinDoor24 live stream (offline)";
     }
   } catch (e) {}
 }
+
+
 
 
 
