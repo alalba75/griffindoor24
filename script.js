@@ -148,7 +148,10 @@ async function gd24PromoteLiveToMainPlayer() {
   if (!iframe) return;
 
   try {
-    const r = await fetch(`/.netlify/functions/live?channelId=${encodeURIComponent(channelId)}`, { cache: "no-store" });
+    const isLocal = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+    const fnBase = isLocal ? "https://griffindoor24.au" : "";
+    const liveUrl = `${fnBase}/.netlify/functions/live?channelId=${encodeURIComponent(channelId)}`;
+    const r = await fetch(liveUrl, { cache: "no-store" });
     const j = await r.json();
 
     if (j && j.live && j.videoId) {
@@ -157,5 +160,13 @@ async function gd24PromoteLiveToMainPlayer() {
     }
   } catch (e) {}
 }
+
+
+
+
+
+
+
+
 
 
