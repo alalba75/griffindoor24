@@ -161,12 +161,12 @@ if (fallback) fallback.hidden = false;
 if (link) link.href = j.url || (`https://www.youtube.com/watch?v=${j.videoId}`);iframe.src = `https://www.youtube.com/embed/${j.videoId}?rel=0&modestbranding=1&playsinline=1&origin=https://griffindoor24.au`;
       iframe.title = j.title || "GriffinDoor24 live stream";
     } else {
-      // Offline: clear to a harmless about:blank so we never show a stale ended stream
-      iframe.src = "about:blank";
-      iframe.title = "GriffinDoor24 live stream (offline)";
+      // Offline: leave the default videos.html embed as-is (do not overwrite)
+      return;
     }
   } catch (e) {}
 }
+
 
 
 
