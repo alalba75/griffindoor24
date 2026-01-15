@@ -155,7 +155,10 @@ async function gd24PromoteLiveToMainPlayer() {
     const j = await r.json();
 
     if (j && j.live && j.videoId) {
-      iframe.src = `https://www.youtube-nocookie.com/embed/${j.videoId}?rel=0&modestbranding=1&playsinline=1`;
+      const fallback = document.getElementById("gd24-live-fallback");
+const link = document.getElementById("gd24-live-link");
+if (fallback) fallback.hidden = false;
+if (link) link.href = j.url || (`https://www.youtube.com/watch?v=${j.videoId}`);iframe.src = `https://www.youtube-nocookie.com/embed/${j.videoId}?rel=0&modestbranding=1&playsinline=1`;
       iframe.title = j.title || "GriffinDoor24 live stream";
     } else {
       // Offline: clear to a harmless about:blank so we never show a stale ended stream
@@ -164,6 +167,7 @@ async function gd24PromoteLiveToMainPlayer() {
     }
   } catch (e) {}
 }
+
 
 
 
