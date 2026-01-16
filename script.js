@@ -106,7 +106,7 @@
     return `
 <footer class="gd24-footer">
   <div class="gd24-foot">
-    <div class="gd24-muted">? ${year} GriffinDoor24</div>
+    <div class="gd24-muted">(c) ${year} GriffinDoor24</div>
     <!-- footer links removed -->
   </div>
 </footer>`;
