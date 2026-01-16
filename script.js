@@ -1,4 +1,4 @@
-/* GriffinDoor24 ? script.js (safe shell injector)
+﻿/* GriffinDoor24 ? script.js (safe shell injector)
    Purpose:
    - Inject header + footer into #site-header / #site-footer
    - Keep existing page layout intact
@@ -42,7 +42,7 @@
   background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14);
 }
 .gd24-brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; font-weight:900; }
-.gd24-brand img{ width:120px; height:auto; object-fit:contain; display:block; } /* logo.png 120px */
+.gd24-brand img{ width:220px; height:auto; object-fit:contain; display:block; } /* logo.png 120px */
 .gd24-nav{ display:flex; flex:1; gap:10px; flex-wrap:wrap; justify-content:center; min-width:220px; }
 .gd24-nav a{
   text-decoration:none; font-weight:800; font-size:.95rem; color:inherit;
@@ -87,8 +87,7 @@
   <div class="gd24-topbar">
     <a class="gd24-brand" href="index.html" aria-label="GriffinDoor24 home">
       <img src="assets/logo.png" alt="GriffinDoor24 logo">
-      <span>GriffinDoor24</span>
-    </a>
+</a>
 
     <nav class="gd24-nav" aria-label="Primary">
       ${links}
