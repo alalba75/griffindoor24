@@ -1,4 +1,4 @@
-﻿/* GriffinDoor24 — script.js (safe shell injector)
+/* GriffinDoor24 ? script.js (safe shell injector)
    Purpose:
    - Inject header + footer into #site-header / #site-footer
    - Keep existing page layout intact
@@ -106,12 +106,8 @@
     return `
 <footer class="gd24-footer">
   <div class="gd24-foot">
-    <div class="gd24-muted">© ${year} GriffinDoor24</div>
-    <div style="display:flex; gap:12px; flex-wrap:wrap;">
-      <a href="businesspromos.html">Business Promos</a>
-      <a href="schoolstuff.html">School Stuff</a>
-      <a href="contact.html">Contact</a>
-    </div>
+    <div class="gd24-muted">? ${year} GriffinDoor24</div>
+    <!-- footer links removed -->
   </div>
 </footer>`;
   }
