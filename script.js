@@ -12,7 +12,7 @@
     { href: "videos.html", label: "Videos" },
     { href: "news.html", label: "News" },
     { href: "businesspromos.html", label: "Business Promos" },
-    { href: "schoolstuff.html", label: "School Stuff" },
+    { href: "otherstuff.html", label: "Other Stuff" },
     { href: "contact.html", label: "Contact" }
   ];
 
