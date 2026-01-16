@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -31,15 +31,17 @@
       <article class="card span-7">
         <h3>Featured this week</h3>
 
-        <!-- opener1 â€” click-to-play, forced 16:9 via your existing .video-wrap CSS -->
-        <div class="video-wrap gd24-click-to-play" style="margin-top:12px;"
-             data-video="Yq1F7LvXwXQ" data-start="0" data-end="15">
-          <button class="gd24-play-btn" type="button" aria-label="Play opener1 (15 seconds)">
-            â–¶ Play opener1 (15s)
-          </button>
-        </div>
-
-        <p class="small" style="margin-top:10px;">This week's featured community video.</p>
+        <!-- opener1  click-to-play, forced 16:9 via your existing .video-wrap CSS -->
+        <!-- Featured fallback video (loads on page load; script.js may overwrite if live) -->
+<div class="video-wrap" style="margin-top:12px;">
+  <iframe
+    id="gd24-featured-player"
+    title="GriffinDoor24 featured"
+    src="https://www.youtube-nocookie.com/embed/ZRnVtHmgmGA?rel=0&modestbranding=1&playsinline=1"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>
+</div>
+<p class="small" style="margin-top:10px;">This week's featured community video.</p>
       </article>
 
       <aside class="card span-5">
@@ -59,41 +61,47 @@
 
   <!-- Page-local click loader so it never affects other pages -->
   <script>
-    (function () {
-      function buildYouTubeURL(videoId, start, end) {
-        const params = new URLSearchParams({
-          autoplay: "1",
-          controls: "1",
-          rel: "0",
-          modestbranding: "1",
-          playsinline: "1",
-          start: String(start || 0)
-        });
-        if (typeof end === "number" && end > 0) params.set("end", String(end));
-        return "https://www.youtube-nocookie.com/embed/" + videoId + "?" + params.toString();
-      }
+(function () {
+  function buildYouTubeURL(videoId, start, end) {
+    const params = new URLSearchParams({
+      autoplay: "1",
+      controls: "1",
+      rel: "0",
+      modestbranding: "1",
+      playsinline: "1"
+    });
 
-      document.querySelectorAll(".gd24-click-to-play").forEach(function (wrap) {
-        const btn = wrap.querySelector(".gd24-play-btn");
-        if (!btn) return;
+    const s = Number(start);
+    const e = Number(end);
 
-        btn.addEventListener("click", function () {
-          const id = wrap.getAttribute("data-video");
-          const start = Number(wrap.getAttribute("data-start") || 0);
-          const end = Number(wrap.getAttribute("data-end") || 0);
+    if (Number.isFinite(s) && s > 0) params.set("start", String(s));
+    if (Number.isFinite(e) && e > 0) params.set("end", String(e));
 
-          const iframe = document.createElement("iframe");
-          iframe.title = "GriffinDoor24 opener1";
-          iframe.src = buildYouTubeURL(id, start, end);
-          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-          iframe.allowFullscreen = true;
+    return "https://www.youtube-nocookie.com/embed/" + videoId + "?" + params.toString();
+  }
 
-          wrap.innerHTML = "";
-          wrap.appendChild(iframe);
-        }, { passive: true });
-      });
-    })();
-  </script>
+  document.querySelectorAll(".gd24-click-to-play").forEach(function (wrap) {
+    const btn = wrap.querySelector(".gd24-play-btn");
+
+    function playNow() {
+      const id = (wrap.getAttribute("data-video") || "").trim();
+      const start = (wrap.getAttribute("data-start") || "").trim();
+      const end = (wrap.getAttribute("data-end") || "").trim();
+      if (!id) return;
+
+      const iframe = document.createElement("iframe");
+      iframe.src = buildYouTubeURL(id, start, end);
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+
+      wrap.innerHTML = "";
+      wrap.appendChild(iframe);
+    }
+
+    if (btn) btn.addEventListener("click", playNow);
+  });
+})();
+</script>
 
   <script src="script.js?v=20260115-1546" defer></script>
 </body>
