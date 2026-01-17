@@ -13,7 +13,7 @@ exports.handler = async function () {
     }
 
     // Only show approved images:
-    const prefix = "griffindoor24/otherstuff/public";
+    const prefix = "griffindoor24/otherstuff/";
 
     const url =
       "https://api.cloudinary.com/v1_1/" +
@@ -41,7 +41,7 @@ exports.handler = async function () {
       };
     }
 
-    const items = (j.resources || []).map(x => ({
+    const items = (j.resources || []).filter(x => (x.public_id || "").indexOf("griffindoor24/otherstuff/pending/") !== 0).map(x => ({
       public_id: x.public_id,
       created_at: x.created_at,
       width: x.width,
