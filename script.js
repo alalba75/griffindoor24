@@ -13,7 +13,6 @@
     { href: "news.html", label: "News" },
     { href: "movingboxes.html", label: "Moving Boxes" },
     { href: "businesspromos.html", label: "Business Promos" },
-    { href: "otherstuff.html", label: "Other Stuff" },
     { href: "contact.html", label: "Contact" }
   ];
 
